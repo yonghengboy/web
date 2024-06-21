@@ -1,0 +1,181 @@
+@charset "utf-8";
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #30333F; /* 背景颜色 */
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 为.back元素添加一个模糊效果的伪元素 */
+.back::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* 减少模糊效果 */
+    position: fixed;
+}
+
+/* 当鼠标悬停在.back上时移除模糊效果 */
+.back:hover::before {
+    backdrop-filter: none;
+}
+
+/* 登录框样式 */
+.log {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    min-height: 300px;
+    background-color: rgba(75, 85, 99, 0.3); /* 更少透明度 */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 更明显的阴影效果 */
+    backdrop-filter: blur(0px);
+     /* 背景模糊效果 */
+}
+
+/* 登录框标题样式 */
+.logtitle {
+    font-size: 40px;
+    font-weight: bolder;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(90deg, rgba(98, 201, 248, 0.8), rgba(243, 111, 255, 0.8), rgba(247, 129, 129, 0.8), rgba(241, 239, 104, 0.8), rgba(117, 226, 84, 0.8), rgba(98, 201, 248, 0.8));
+    background-size: 800%;
+    animation: gradient 30s infinite linear;
+    color: transparent;
+    line-height: 100px;
+}
+
+/* 输入框样式 */
+.logbody .txt {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9); /* 更亮的底部边框 */
+    background: transparent;
+    transition: 0.3s;
+    height: 30px;
+    padding-top: 10px;
+    color: white; /* 输入文本颜色 */
+}
+
+/* 鼠标悬停在输入框时的放大效果 */
+.logbody .txt:hover {
+    transform: scaleX(1.1);
+}
+
+/* 输入框聚焦时的样式 */
+.logbody .txt:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(137, 160, 245, 0.9);
+    color: rgba(137, 160, 245, 0.9);
+}
+
+/* 提交按钮样式 */
+.logbody .sub {
+    width: 80%;
+    height: 45px;
+    margin-top: 10%;
+    margin-left: 10%;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(98, 128, 158, 0.9); /* 按钮背景色 */
+    font-size: 16px;
+    font-family: "幼圆";
+    color: white; /* 按钮文本颜色 */
+}
+
+/* 提交按钮悬停时的样式 */
+.logbody .sub:hover {
+    background-color: rgba(118, 155, 202, 0.9);
+    box-shadow: 0 0 10px rgba(118, 155, 202, 0.9);
+}
+
+/* 游客登录按钮样式 */
+.ykbt {
+    margin-top: 20px;
+    margin-left: 70%;
+    border: none;
+    background-color: transparent;
+    color: white; /* 按钮文本颜色 */
+}
+
+/* 游客登录按钮悬停时的样式 */
+.ykbt:hover {
+    color: rgb(64, 160, 216);
+}
+
+/* 渐变动画定义 */
+@keyframes gradient {
+    100% {
+        background-position: -800% 0%;
+    }
+}
+
+/* 加载动画容器样式 */
+.con {
+    margin-top: -100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* 减少模糊效果 */
+    display: none;
+}
+
+/* 加载动画样式 */
+.load {
+    position: relative;
+    display: flex;
+}
+
+/* 加载动画中的点样式 */
+.load .dot {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-attachment: fixed;
+    background: rgb(120, 214, 214);
+    margin: 20px 0 0 20px;
+    border-radius: 50%;
+    animation: dotanim 1s infinite linear;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+/* 点的动画定义 */
+@keyframes dotanim {
+    0% {
+        transform: scale(0.2);
+    }
+    10% {
+        transform: scale(1);
+    }
+    50%, 100% {
+        transform: scale(0.2);
+    }
+}

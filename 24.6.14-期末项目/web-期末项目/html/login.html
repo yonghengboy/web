@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <!-- 背景画布 -->
+    <canvas id="backgroundCanvas"></canvas>
+    <!-- 叠加层 -->
+    <div id="overlay"></div>
+    <!-- 包含登录表单的容器 -->
+    <div class="back" id="back">
+        <div class="log" id="log">
+            <div class="logtitle">登录</div><p></p>
+            <!-- 登录表单 -->
+            <form action="index.html" id="logbody" class="logbody" onsubmit="return login()">
+                <input type="text" id="zh" size="20" class="txt" placeholder="账户">
+                <br>
+                <input type="password" id="mm" size="20" class="txt" placeholder="密码">
+                <br>
+                <input type="submit" value="登录" id="sub" class="sub">
+            </form> 
+            <!-- 游客登录按钮 -->
+            <a href="index.html"><input type="button" value="游客登录" id="ykbt" class="ykbt"></a>
+        </div>
+    </div>
+    <!-- 加载动画容器 -->
+    <div id="con" class="con">
+        <div class="load">
+            <div class="dot" style="--i:1"></div>
+            <div class="dot" style="--i:2"></div>
+            <div class="dot" style="--i:3"></div>
+            <div class="dot" style="--i:4"></div>
+        </div>
+    </div>
+    <script src="../js/Login.js" type="text/javascript"></script>
+</body>
+</html>
