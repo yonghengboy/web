@@ -1,22 +1,81 @@
-// 退出登录函数
-function logout() {
-    console.log('Logout button clicked');
-    window.location.href = 'login.html'; // 替换为实际的登录页面URL
+// 打开新页面显示图片
+function openImage(url) {
+    window.open(url, '_blank'); // 在新标签页中打开指定的URL
+}
+
+// 跳转到指定页面
+function navigateTo(page) {
+    window.location.href = page; // 跳转到指定的页面
+}
+
+// 等待整个文档内容加载完毕后执行
+document.addEventListener("DOMContentLoaded", function() {
+    // 获取旋转圆形图片和静止圆形图片的元素
+    var rotatingCircle = document.getElementById('rotatingCircle');
+    var staticCircle = document.getElementById('staticCircle');
+
+    // 定义鼠标进入事件处理函数
+    function onMouseEnter() {
+        rotatingCircle.classList.add('rotate'); // 添加旋转效果类
+    }
+
+    // 定义鼠标离开事件处理函数
+    function onMouseLeave() {
+        rotatingCircle.classList.remove('rotate'); // 移除旋转效果类
+    }
+
+    // 为旋转圆形图片添加事件监听器
+    rotatingCircle.addEventListener('mouseenter', onMouseEnter);
+    rotatingCircle.addEventListener('mouseleave', onMouseLeave);
+
+    // 为静止圆形图片添加事件监听器
+    staticCircle.addEventListener('mouseenter', onMouseEnter);
+    staticCircle.addEventListener('mouseleave', onMouseLeave);
+});
+
+// 确保所有功能在页面加载时都能正常工作
+window.onload = function() {
+    onPageLoad(); // 页面加载时执行
+    initBackground(); // 初始化背景动画
+}
+
+// 随机名言数组
+const quotes = [
+    "名言1: 知识就是力量。",
+    "名言2: 时间就是金钱。",
+    "名言3: 努力奋斗，勇往直前。",
+    "名言4: 成功源于坚持不懈。"
+];
+
+// 从数组中随机选择一条名言并显示
+function displayRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length); // 生成随机索引
+    document.getElementById('quote').innerText = quotes[randomIndex]; // 显示随机名言
+}
+
+// 页面加载时显示随机名言并依次显示内容
+function onPageLoad() {
+    displayRandomQuote(); // 显示随机名言
+    const elements = document.querySelectorAll('.content'); // 获取所有 content 类的元素
+    elements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('show'); // 添加显示效果类
+        }, index * 300); // 每隔0.3秒显示一个元素
+    });
 }
 
 // 动态背景效果
-window.onload = function () {
-    // 确保canvas覆盖整个背景
-    var canvas = document.getElementById('backgroundCanvas'),
-        ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.lineWidth = .3;
-    ctx.strokeStyle = (new Color(150)).style;
+function initBackground() {
+    var canvas = document.getElementById('backgroundCanvas'), // 获取画布元素
+        ctx = canvas.getContext('2d'); // 获取画布上下文
+    canvas.width = window.innerWidth; // 设置画布宽度为窗口宽度
+    canvas.height = window.innerHeight; // 设置画布高度为窗口高度
+    ctx.lineWidth = .3; // 设置线条宽度
+    ctx.strokeStyle = (new Color(150)).style; // 设置线条颜色
 
     var mousePosition = {
-        x: 30 * canvas.width / 100,
-        y: 30 * canvas.height / 100
+        x: 30 * canvas.width / 100, // 设置鼠标初始位置X
+        y: 30 * canvas.height / 100 // 设置鼠标初始位置Y
     };
 
     // 定义点和线条的相关参数
@@ -28,8 +87,7 @@ window.onload = function () {
         randomLines: []    // 存放随机线条的数组
     };
 
-    // 最大线条长度
-    var maxLineLength = 80;
+    var maxLineLength = 80; // 最大线条长度
 
     // 计算两个组件的加权平均值
     function mixComponents(comp1, weight1, comp2, weight2) {
@@ -93,7 +151,6 @@ window.onload = function () {
         for (i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
 
-            // 碰到画布边界时反弹
             if (dot.y < 0 || dot.y > canvas.height) {
                 dot.vx = dot.vx;
                 dot.vy = -dot.vy;
@@ -106,14 +163,12 @@ window.onload = function () {
             dot.y += dot.vy;
         }
 
-        // 检查随机线条的存活时间和距离
         var currentTime = Date.now();
         dots.randomLines = dots.randomLines.filter(function (line) {
             var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2));
             return currentTime - line.timestamp < line.lifetime && distance < dots.distance * 2 && distance < maxLineLength;
         });
 
-        // 如果线条数量少于50，添加新的随机线条
         while (dots.randomLines.length < 80) {
             var dot1 = dots.array[Math.floor(Math.random() * dots.nb)];
             var dot2 = dots.array[Math.floor(Math.random() * dots.nb)];
@@ -132,7 +187,7 @@ window.onload = function () {
     // 连接点之间的线条
     function connectDots() {
         for (i = 0; i < dots.nb; i++) {
-            for (j = i + 1; j < dots.nb; j++) { // 改成 j = i + 1，避免重复连线
+            for (j = i + 1; j < dots.nb; j++) {
                 var i_dot = dots.array[i];
                 var j_dot = dots.array[j];
 
@@ -150,7 +205,6 @@ window.onload = function () {
             }
         }
 
-        // 绘制随机线条
         dots.randomLines.forEach(function (line) {
             var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2));
             if (distance < maxLineLength) {
@@ -181,26 +235,23 @@ window.onload = function () {
 
     // 动画函数
     function animateDots() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        moveDots();
-        connectDots();
-        drawDots();
-        requestAnimationFrame(animateDots);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除画布
+        moveDots(); // 移动点
+        connectDots(); // 连接点
+        drawDots(); // 绘制点
+        requestAnimationFrame(animateDots); // 请求下一帧动画
     }
 
-    // 初始化并开始动画
-    createDots();
-    requestAnimationFrame(animateDots);
+    createDots(); // 创建点
+    requestAnimationFrame(animateDots); // 开始动画
 
-    // 将鼠标事件监听器绑定到 window
     window.addEventListener('mousemove', function (e) {
-        mousePosition.x = e.pageX;
-        mousePosition.y = e.pageY;
+        mousePosition.x = e.pageX; // 更新鼠标位置X
+        mousePosition.y = e.pageY; // 更新鼠标位置Y
     });
 
-    // 将鼠标离开事件监听器绑定到 window
     window.addEventListener('mouseleave', function (e) {
-        mousePosition.x = canvas.width / 2;
-        mousePosition.y = canvas.height / 2;
+        mousePosition.x = canvas.width / 2; // 鼠标离开时重置位置X
+        mousePosition.y = canvas.height / 2; // 鼠标离开时重置位置Y
     });
 }

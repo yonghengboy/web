@@ -22,3 +22,17 @@ canvas {
     text-align: center;
     margin-top: 20px;
 }
+main {
+    padding: 20px;
+    z-index: 2; /* 确保在canvas之上 */
+    position: relative;
+}
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* 确保在其他元素之下 */
+}
+

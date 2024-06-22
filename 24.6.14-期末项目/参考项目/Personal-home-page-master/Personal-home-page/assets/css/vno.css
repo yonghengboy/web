@@ -1,64 +1,86 @@
 /*头像效果-start*/
 
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
+ /* 重置HTML和body的一些默认样式 */
+ html {
+  font-family: sans-serif; /* 设置默认字体 */
+  -ms-text-size-adjust: 100%; /* 调整IE浏览器的文本大小 */
+  -webkit-text-size-adjust: 100%; /* 调整Webkit浏览器的文本大小 */
 }
+
+#backgroundCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 使画布在其他内容的后面 */
+}
+
 
 body {
-  margin: 0
+  margin: 0; /* 去掉body的默认外边距 */
 }
 
+/* 设置特效容器的样式 */
 .ih-item.circle.effect {
-  margin: 0 auto;
-  -webkit-perspective: 900px;
-  -moz-perspective: 900px;
+  margin: 0 auto; /* 居中显示 */
+  -webkit-perspective: 900px; /* 设置3D透视效果 */
+  -moz-perspective: 900px; 
   perspective: 900px;
 }
+
+/* 图片样式及过渡效果 */
 .ih-item.circle.effect .img {
-  z-index: 11;
-  -webkit-transition: all 0.5s ease-in-out;
+  z-index: 11; /* 设置z轴顺序 */
+  -webkit-transition: all 0.5s ease-in-out; /* 过渡效果 */
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 
+/* 信息部分3D效果 */
 .ih-item.circle.effect .info {
-  -webkit-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d; /* 保持3D转换 */
   -moz-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 
+/* 背景样式 */
 .ih-item.circle.effect .info .info-back {
-  opacity: 1;
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  background: #333333;
+  /* opacity: 1;  */
+  /* 背景透明度 */
+  /* border-radius: 50%;  */
+  /* 圆角效果 */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background: #333333;  */
+  /* 背景颜色 */
 }
 
+/* 标题样式 */
 .ih-item.circle.effect .info h2 {
-  color: #fff;    
+  color: #fff; /* 字体颜色 */
   position: relative;
-  font-size: 18px;
-  margin: 0 auto;
-  padding-top: 40px;
+  font-size: 18px; /* 字体大小 */
+  margin: 0 auto; 
+  padding-top: 40px; /* 内边距 */
   height: 35px;
-  text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3); /* 文字阴影 */
 }
 
+/* 描述文本样式 */
 .ih-item.circle.effect .info p {
-  color: #bbb;
-  padding: 0px 0px 0px 0px;
-  font-style: italic;
-  padding-left: 0px;
-  font-size: 10px;
+  color: #bbb; /* 字体颜色 */
+  padding: 0; /* 去掉内边距 */
+  font-style: italic; /* 斜体 */
+  padding-left: 0; 
+  font-size: 10px; /* 字体大小 */
 }
 
+/* 底部到顶部的动画效果 */
 .ih-item.circle.effect.bottom_to_top .img {
-  -webkit-transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0; /* 设置动画原点 */
   -moz-transform-origin: 50% 0;
   -ms-transform-origin: 50% 0;
   -o-transform-origin: 50% 0;
@@ -66,13 +88,14 @@ body {
 }
 
 .ih-item.circle.effect.bottom_to_top a:hover .img {
-  -webkit-transform: rotate3d(1, 0, 0, 180deg);
+  -webkit-transform: rotate3d(1, 0, 0, 180deg); /* 旋转动画 */
   -moz-transform: rotate3d(1, 0, 0, 180deg);
   -ms-transform: rotate3d(1, 0, 0, 180deg);
   -o-transform: rotate3d(1, 0, 0, 180deg);
   transform: rotate3d(1, 0, 0, 180deg);
 }
 
+/* 顶部到底部的动画效果 */
 .ih-item.circle.effect.top_to_bottom .img {
   -webkit-transform-origin: 50% 100%;
   -moz-transform-origin: 50% 100%;
@@ -89,6 +112,7 @@ body {
   transform: rotate3d(1, 0, 0, -180deg);
 }
 
+/* 左到右的动画效果 */
 .ih-item.circle.effect.left_to_right .img {
   -webkit-transform-origin: 100% 50%;
   -moz-transform-origin: 100% 50%;
@@ -105,6 +129,7 @@ body {
   transform: rotate3d(0, 1, 0, 180deg);
 }
 
+/* 右到左的动画效果 */
 .ih-item.circle.effect.right_to_left .img {
   -webkit-transform-origin: 0% 50%;
   -moz-transform-origin: 0% 50%;
@@ -121,32 +146,37 @@ body {
   transform: rotate3d(0, 1, 0, -180deg);
 }
 
+/* 链接样式 */
 .ih-item a {
-  color: #333;
+  color: #333; /* 链接字体颜色 */
 }
 
 .ih-item a:hover {
-  text-decoration: none;
+  text-decoration: none; /* 去掉链接下划线 */
 }
 
+/* 图片样式 */
 .ih-item img {
   width: 100%;
   height: 100%;
 }
 
+/* 圆形头像容器样式 */
 .ih-item.circle {
   position: relative;
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: 50%; /* 圆角效果 */
 }
 
+/* 圆形头像图片样式 */
 .ih-item.circle .img {
   position: relative;
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
+
 .ih-item.circle .img:before {
   position: absolute;
   display: block;
@@ -160,9 +190,10 @@ body {
 }
 
 .ih-item.circle .img img {
-  border-radius: 50%;
+  border-radius: 50%; /* 圆角效果 */
 }
 
+/* 信息部分样式 */
 .ih-item.circle .info {
   position: absolute;
   top: 0;
@@ -174,31 +205,35 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
+/* 响应式设计 */
 @media all and (max-width: 780px) {
   .ih-item.circle .img {
       position: relative;
       width: 100px;
       height: 100px;
-      /*margin-top: 20px;*/
       border-radius: 50%;
   }
+
   .ih-item.circle {
       position: relative;
       width: 100px;
       height: 100px;
       border-radius: 50%;
   }
-  .ih-item.circle .info .info-back h2{
-    font-size: 0.9em;
+
+  .ih-item.circle .info .info-back h2 {
+      font-size: 0.9em;
   }
 }
+
 /**************抖动效果******************/
 .profilepic {
   text-align: center;
   display: block;
   -webkit-box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0px 2px 20px 3px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0px 2px 20px 3px rgba(0, 0, 0, 0.25);
-  border-radius: 300px;
+  border-radius: 300px; /* 圆角效果 */
   width: 128px;
   height: 128px;
   margin: 0 auto;
@@ -213,30 +248,7 @@ body {
   text-align: center;
 }
 
-/* .profilepic img.show {
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-}
-
-.profilepic img {
-  width: 20%;
-  height: 20%;
-  border-radius: 300px;
-  opacity: 0;
-  -webkit-transition: all 0.2s ease-in;
-} 
-
-.profilepic:hover {
-  -webkit-animation: btnGroups 1s linear;
-  -webkit-animation: btnGroups 1s linear;
-  -moz-animation: btnGroups 1s linear;
-  -ms-animation: btnGroups 1s linear;
-  animation: btnGroups 1s linear;
-} */
-
-/*头像效果-end*/
-
+/* 动画样式 */
 .animated {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
@@ -7536,12 +7548,24 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+/* 设置元素的外边距为0，消除默认的外边距 */
+margin: 0;
+
+/* 设置元素的内边距为0，消除默认的内边距 */
+padding: 0;
+
+/* 设置元素的边框为0，消除默认的边框 */
+border: 0;
+
+/* 设置元素的字体大小为100%，即继承父元素的字体大小 */
+font-size: 100%;
+
+/* 设置元素的字体属性为继承自父元素的字体 */
+font: inherit;
+
+/* 设置元素的垂直对齐方式为基线，对齐其父元素的基线 */
+vertical-align: baseline;
+
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -7560,7 +7584,9 @@ section {
 }
 
 body {
-  line-height: 1;
+/* 设置元素的行高为1，即行高等于字体大小，使文本行间距紧凑 */
+line-height: 1;
+
 }
 
 ol,
@@ -7601,8 +7627,12 @@ figure td {
 }
 
 body {
-  width: 100%;
-  *zoom: 1;
+/* 设置元素宽度为100%，即占据父元素的全部宽度 */
+width: 100%;
+
+/* 触发IE浏览器的hasLayout属性，确保元素在IE6和IE7中正确渲染 */
+*zoom: 1;
+
 }
 
 body:before,
@@ -7626,10 +7656,18 @@ html {
 }
 
 body {
-  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  font-size: 1em;
-  color: #666;
-  -webkit-font-smoothing: antialiased;
+/* 设置字体系列，优先使用 "ff-tisa-web-pro-1" 和 "ff-tisa-web-pro-2"，如果这些字体不可用，则依次使用其他指定字体 */
+font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+
+/* 设置字体大小为1em，相对于父元素的字体大小 */
+font-size: 1em;
+
+/* 设置文字颜色为#666，深灰色 */
+color: #666;
+
+/* 优化字体渲染，使文本更加平滑，适用于WebKit浏览器（如Chrome、Safari） */
+-webkit-font-smoothing: antialiased;
+
 }
 
 ::selection {
