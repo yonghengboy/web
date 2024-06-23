@@ -69,7 +69,7 @@ body {
     perspective: 900px; /* 添加3D视角 */
     top: 0; /* 距离顶部为0 */
     left: 0; /* 距离左侧为0 */
-    border: 4px solid #B0C4DE; /* 添加淡蓝色边框 */
+    border: 4px solid #A1D490; /* 添加浅绿色边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
 }
 
@@ -135,16 +135,17 @@ body {
     padding: 10px 20px; /* 内边距为10px 20px */
     font-size: 16px; /* 字体大小为16px */
     cursor: pointer; /* 鼠标悬停时显示手型光标 */
-    background-color: #4CAF50; /* 背景颜色为绿色 */
-    border: none; /* 移除默认边框 */
-    color: white; /* 字体颜色为白色 */
-    border-radius: 5px; /* 边框圆角半径为5px */
+    background-color: transparent; /* 背景颜色透明 */
+    border: 2px solid #A1D490; /* 添加浅绿色边框 */
+    color: #A1D490; /* 字体颜色为浅绿色 */
+    border-radius: 20px; /* 边框圆角半径为20px */
     transition: background-color 0.3s ease, transform 0.3s ease; /* 背景颜色和缩放动画效果，持续时间为0.3秒 */
 }
 
-/* 设置 button-container 类下 button 元素在悬停时的样式，背景颜色变深，按钮放大 */
+/* 设置 button-container 类下 button 元素在悬停时的样式，背景颜色变为浅绿色透明，字体颜色变为白色，按钮放大 */
 .button-container button:hover {
-    background-color: #45a049; /* 悬停时背景颜色变为较深的绿色 */
+    background-color: rgba(161, 212, 144, 0.1); /* 悬停时背景颜色变为透明的浅绿色 */
+    color: white; /* 悬停时字体颜色变为白色 */
     transform: scale(1.1); /* 悬停时按钮放大至1.1倍 */
 }
 

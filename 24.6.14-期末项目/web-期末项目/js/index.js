@@ -126,23 +126,24 @@ function initBackground() {
 
     // 定义点对象
     function Dot() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * canvas.width; // 随机生成点的初始X位置
+        this.y = Math.random() * canvas.height; // 随机生成点的初始Y位置
 
-        this.vx = -.5 + Math.random();
-        this.vy = -.5 + Math.random();
+        this.vx = -.5 + Math.random(); // 随机生成点的X速度
+        this.vy = -.5 + Math.random(); // 随机生成点的Y速度
 
-        this.radius = Math.random() * 2;
+        this.radius = Math.random() * 2; // 随机生成点的半径
 
-        this.color = new Color();
+        this.color = new Color(); // 随机生成点的颜色
     }
 
     Dot.prototype = {
+        // 绘制点
         draw: function () {
-            ctx.beginPath();
-            ctx.fillStyle = this.color.style;
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fill();
+            ctx.beginPath(); // 开始绘制路径
+            ctx.fillStyle = this.color.style; // 设置填充颜色
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); // 绘制圆形
+            ctx.fill(); // 填充圆形
         }
     };
 
@@ -151,28 +152,42 @@ function initBackground() {
         for (i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
 
+            // 当点超出画布边界时反向移动
             if (dot.y < 0 || dot.y > canvas.height) {
-                dot.vx = dot.vx;
-                dot.vy = -dot.vy;
+                dot.vx = dot.vx; // 保持X速度
+                dot.vy = -dot.vy; // 反向Y速度
             } else if (dot.x < 0 || dot.x > canvas.width) {
-                dot.vx = -dot.vx;
-                dot.vy = dot.vy;
+                dot.vx = -dot.vx; // 反向X速度
+                dot.vy = dot.vy; // 保持Y速度
             }
 
+            // 更新点的位置
             dot.x += dot.vx;
             dot.y += dot.vy;
+
+            // 添加磁吸效果
+            var distanceToMouseX = dot.x - mousePosition.x; // 点到鼠标的X距离
+            var distanceToMouseY = dot.y - mousePosition.y; // 点到鼠标的Y距离
+            var distanceToMouse = Math.sqrt(distanceToMouseX * distanceToMouseX + distanceToMouseY * distanceToMouseY); // 点到鼠标的总距离
+
+            // 当点在磁吸范围内时，逐渐靠近边缘
+            if (distanceToMouse < dots.d_radius) {
+                dot.x -= distanceToMouseX * 0.01; // 调整吸引力强度
+                dot.y -= distanceToMouseY * 0.01; // 调整吸引力强度
+            }
         }
 
-        var currentTime = Date.now();
+        var currentTime = Date.now(); // 获取当前时间
         dots.randomLines = dots.randomLines.filter(function (line) {
-            var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2));
-            return currentTime - line.timestamp < line.lifetime && distance < dots.distance * 2 && distance < maxLineLength;
+            var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2)); // 计算线条两端点的距离
+            return currentTime - line.timestamp < line.lifetime && distance < dots.distance * 2 && distance < maxLineLength; // 过滤有效的随机线条
         });
 
+        // 生成随机线条
         while (dots.randomLines.length < 80) {
-            var dot1 = dots.array[Math.floor(Math.random() * dots.nb)];
-            var dot2 = dots.array[Math.floor(Math.random() * dots.nb)];
-            var distance = Math.sqrt(Math.pow(dot1.x - dot2.x, 2) + Math.pow(dot1.y - dot2.y, 2));
+            var dot1 = dots.array[Math.floor(Math.random() * dots.nb)]; // 随机选择一个点
+            var dot2 = dots.array[Math.floor(Math.random() * dots.nb)]; // 随机选择另一个点
+            var distance = Math.sqrt(Math.pow(dot1.x - dot2.x, 2) + Math.pow(dot1.y - dot2.y, 2)); // 计算两点之间的距离
             if (dot1 !== dot2 && distance < dots.distance * 2 && distance < maxLineLength) {
                 dots.randomLines.push({
                     dot1: dot1,
@@ -191,29 +206,30 @@ function initBackground() {
                 var i_dot = dots.array[i];
                 var j_dot = dots.array[j];
 
-                var distance = Math.sqrt(Math.pow(i_dot.x - j_dot.x, 2) + Math.pow(i_dot.y - j_dot.y, 2));
-                if (distance < dots.distance && distance < maxLineLength) {
+                var distance = Math.sqrt(Math.pow(i_dot.x - j_dot.x, 2) + Math.pow(i_dot.y - j_dot.y, 2)); // 计算两点之间的距离
+                if (distance < dots.distance && distance < maxLineLength) { // 当距离小于最大距离时
                     if ((i_dot.x - mousePosition.x) < dots.d_radius && (i_dot.y - mousePosition.y) < dots.d_radius && (i_dot.x - mousePosition.x) > -dots.d_radius && (i_dot.y - mousePosition.y) > -dots.d_radius) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = averageColorStyles(i_dot, j_dot);
-                        ctx.moveTo(i_dot.x, i_dot.y);
-                        ctx.lineTo(j_dot.x, j_dot.y);
-                        ctx.stroke();
-                        ctx.closePath();
+                        ctx.beginPath(); // 开始绘制路径
+                        ctx.strokeStyle = averageColorStyles(i_dot, j_dot); // 设置线条颜色
+                        ctx.moveTo(i_dot.x, i_dot.y); // 移动画笔到第一个点
+                        ctx.lineTo(j_dot.x, j_dot.y); // 绘制线条到第二个点
+                        ctx.stroke(); // 描边
+                        ctx.closePath(); // 关闭路径
                     }
                 }
             }
         }
 
+        // 绘制随机线条
         dots.randomLines.forEach(function (line) {
-            var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2));
+            var distance = Math.sqrt(Math.pow(line.dot1.x - line.dot2.x, 2) + Math.pow(line.dot1.y - line.dot2.y, 2)); // 计算线条两端点的距离
             if (distance < maxLineLength) {
-                ctx.beginPath();
-                ctx.strokeStyle = averageColorStyles(line.dot1, line.dot2);
-                ctx.moveTo(line.dot1.x, line.dot1.y);
-                ctx.lineTo(line.dot2.x, line.dot2.y);
-                ctx.stroke();
-                ctx.closePath();
+                ctx.beginPath(); // 开始绘制路径
+                ctx.strokeStyle = averageColorStyles(line.dot1, line.dot2); // 设置线条颜色
+                ctx.moveTo(line.dot1.x, line.dot1.y); // 移动画笔到第一个点
+                ctx.lineTo(line.dot2.x, line.dot2.y); // 绘制线条到第二个点
+                ctx.stroke(); // 描边
+                ctx.closePath(); // 关闭路径
             }
         });
     }
@@ -221,7 +237,7 @@ function initBackground() {
     // 创建点
     function createDots() {
         for (i = 0; i < dots.nb; i++) {
-            dots.array.push(new Dot());
+            dots.array.push(new Dot()); // 向点数组中添加新点
         }
     }
 
@@ -229,7 +245,7 @@ function initBackground() {
     function drawDots() {
         for (i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
-            dot.draw();
+            dot.draw(); // 调用点的绘制方法
         }
     }
 
@@ -253,5 +269,22 @@ function initBackground() {
     window.addEventListener('mouseleave', function (e) {
         mousePosition.x = canvas.width / 2; // 鼠标离开时重置位置X
         mousePosition.y = canvas.height / 2; // 鼠标离开时重置位置Y
+    });
+
+    // 窗口大小改变时重新设置画布大小
+    window.onresize = function() {
+        canvas.width = window.innerWidth; // 更新画布宽度
+        canvas.height = window.innerHeight; // 更新画布高度
+        ctx.lineWidth = .3; // 设置线条宽度
+        ctx.strokeStyle = (new Color(150)).style; // 设置线条颜色
+    };
+
+    // 窗口没激活时动画停止，省计算资源
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            cancelAnimationFrame(animateDots); // 页面不可见时停止动画
+        } else {
+            requestAnimationFrame(animateDots); // 页面可见时重新开始动画
+        }
     });
 }
