@@ -1,9 +1,6 @@
-/* styles.css */
-
 /* 设置全局字体、背景颜色、边距和填充 */
 body {
     font-family: 'Arial', sans-serif;
-
     margin: 0;
     padding: 0;
 }
