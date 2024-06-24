@@ -170,3 +170,17 @@ h2#title2 {
     color: #87CEEB; /* 天蓝色 */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 添加阴影 */
 }
+
+/* 设置 icon 类的样式，宽度为24px，高度为24px，外边距为10px */
+.icon {
+    width: 32px; /* 设置图标宽度 */
+    height: 32px; /* 设置图标高度 */
+    margin: 0 10px; /* 左右外边距为10px */
+    transition: transform 0.3s ease; /* 添加缩放动画效果 */
+}
+
+/* 悬停时图标放大 */
+.icon:hover {
+    transform: scale(1.2); /* 悬停时图标放大至1.2倍 */
+}
+

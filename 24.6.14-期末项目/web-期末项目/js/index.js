@@ -78,6 +78,8 @@ function initBackground() {
         y: 30 * canvas.height / 100 // 设置鼠标初始位置Y
     };
 
+    var isMouseInside = true; // 用于标记鼠标是否在页面内
+
     // 定义点和线条的相关参数
     var dots = {
         nb: 1500,          // 点的数量
@@ -135,6 +137,9 @@ function initBackground() {
         this.radius = Math.random() * 2; // 随机生成点的半径
 
         this.color = new Color(); // 随机生成点的颜色
+        this.attractionTime = 0; // 初始化被磁吸的时间
+        this.isEscaping = false; // 标记是否在逃离
+        this.escapeStartTime = null; // 逃离开始时间
     }
 
     Dot.prototype = {
@@ -165,15 +170,49 @@ function initBackground() {
             dot.x += dot.vx;
             dot.y += dot.vy;
 
-            // 添加磁吸效果
-            var distanceToMouseX = dot.x - mousePosition.x; // 点到鼠标的X距离
-            var distanceToMouseY = dot.y - mousePosition.y; // 点到鼠标的Y距离
-            var distanceToMouse = Math.sqrt(distanceToMouseX * distanceToMouseX + distanceToMouseY * distanceToMouseY); // 点到鼠标的总距离
+            // 仅在鼠标在页面内时应用磁吸效果
+            if (isMouseInside) {
+                // 添加磁吸效果
+                var distanceToMouseX = dot.x - mousePosition.x; // 点到鼠标的X距离
+                var distanceToMouseY = dot.y - mousePosition.y; // 点到鼠标的Y距离
+                var distanceToMouse = Math.sqrt(distanceToMouseX * distanceToMouseX + distanceToMouseY * distanceToMouseY); // 点到鼠标的总距离
 
-            // 当点在磁吸范围内时，逐渐靠近边缘
-            if (distanceToMouse < dots.d_radius) {
-                dot.x -= distanceToMouseX * 0.01; // 调整吸引力强度
-                dot.y -= distanceToMouseY * 0.01; // 调整吸引力强度
+                if (!dot.isEscaping) {
+                    // 当点在磁吸范围内时，逐渐靠近边缘，并增加被磁吸的时间
+                    if (distanceToMouse < dots.d_radius) {
+                        dot.x -= distanceToMouseX * 0.01; // 调整吸引力强度
+                        dot.y -= distanceToMouseY * 0.01; // 调整吸引力强度
+                        dot.attractionTime += 1; // 增加被磁吸的时间
+                    } else {
+                        dot.attractionTime = 0; // 重置被磁吸的时间
+                    }
+
+                    // 当被磁吸超过五秒后，有概率挣脱磁吸，时间越久概率越大
+                    if (dot.attractionTime > 500 && Math.random() < (dot.attractionTime - 500) / 1000) {
+                        dot.isEscaping = true; // 标记为逃离状态
+                        dot.vx += distanceToMouseX * 0.05; // 逃离时速度加快
+                        dot.vy += distanceToMouseY * 0.05; // 逃离时速度加快
+                        dot.escapeStartTime = Date.now(); // 记录逃离开始时间
+                    }
+                } else {
+                    // 当点在逃离状态时，不受磁吸影响
+                    dot.x += dot.vx; 
+                    dot.y += dot.vy;
+                    dot.attractionTime = 0; // 重置被磁吸的时间
+
+                    // 检查逃离时间
+                    var elapsedTime = Date.now() - dot.escapeStartTime; // 计算逃离时间
+                    if (elapsedTime > 2000) {
+                        var speedReduction = Math.min((elapsedTime - 2000) / 4000, 1); // 2秒后开始衰减，6秒后回到正常速度
+                        dot.vx *= 1 - speedReduction * 0.8; // 逐渐减速，确保速度不会变为零
+                        dot.vy *= 1 - speedReduction * 0.8; // 逐渐减速，确保速度不会变为零
+                        if (speedReduction >= 1) {
+                            dot.vx = Math.sign(dot.vx) * 0.5; // 设置为正常速度
+                            dot.vy = Math.sign(dot.vy) * 0.5; // 设置为正常速度
+                            dot.isEscaping = false; // 取消逃离状态
+                        }
+                    }
+                }
             }
         }
 
@@ -264,11 +303,11 @@ function initBackground() {
     window.addEventListener('mousemove', function (e) {
         mousePosition.x = e.pageX; // 更新鼠标位置X
         mousePosition.y = e.pageY; // 更新鼠标位置Y
+        isMouseInside = true; // 标记鼠标在页面内
     });
 
     window.addEventListener('mouseleave', function (e) {
-        mousePosition.x = canvas.width / 2; // 鼠标离开时重置位置X
-        mousePosition.y = canvas.height / 2; // 鼠标离开时重置位置Y
+        isMouseInside = false; // 标记鼠标离开页面
     });
 
     // 窗口大小改变时重新设置画布大小
@@ -288,3 +327,4 @@ function initBackground() {
         }
     });
 }
+
