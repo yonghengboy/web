@@ -1,38 +1,21 @@
+/* 文件名: background.css */
+
+/* 设置 body 和 html 元素的样式，移除默认边距和内边距，设置宽度和高度为100%，隐藏溢出内容，背景颜色为深灰色 */
 body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #30333F;
+    margin: 0; /* 移除默认的边距 */
+    padding: 0; /* 移除默认的内边距 */
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    overflow-y: auto; /* 允许垂直滚动 */
+    background: #30333F; /* 设置背景颜色为深灰色 */
 }
 
+/* 设置 canvas 元素的样式，使其固定定位，覆盖整个窗口 */
 canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: fixed; /* 固定定位，脱离文档流 */
+    top: 0; /* 距离顶部为0 */
+    left: 0; /* 距离左侧为0 */
+    width: 100%; /* 宽度为100% */
+    height: 100%; /* 高度为100% */
+    z-index: -1; /* 设置 z-index 为 -1，确保 canvas 在背景层 */
 }
-
-.content {
-    position: relative;
-    z-index: 1;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-}
-main {
-    padding: 20px;
-    z-index: 2; /* 确保在canvas之上 */
-    position: relative;
-}
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* 确保在其他元素之下 */
-}
-

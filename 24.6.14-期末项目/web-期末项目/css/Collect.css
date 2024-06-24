@@ -1,0 +1,105 @@
+/* styles.css */
+
+/* 设置全局字体、背景颜色、边距和填充 */
+body {
+    font-family: 'Arial', sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置容器的宽度和居中对齐 */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* 居中文本 */
+.text-center {
+    text-align: center;
+}
+
+/* 标题样式 */
+.welcome-title {
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+/* 项目标题样式 */
+.projects-header h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+/* 正文内容样式 */
+.projects-header p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+/* 动画基础样式 */
+.animated {
+    animation-duration: 2s; /* 动画持续时间 */
+    animation-fill-mode: both; /* 保持动画结束状态 */
+}
+
+.delay-1s {
+    animation-delay: 1s; /* 延迟1秒开始动画 */
+}
+
+.delay-2s {
+    animation-delay: 2s; /* 延迟2秒开始动画 */
+}
+
+/* 定义从左侧淡入的动画 */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0; /* 初始透明度 */
+        transform: translateX(-100px); /* 初始位置，幅度更大 */
+    }
+    to {
+        opacity: 1; /* 结束透明度 */
+        transform: translateX(0); /* 结束位置 */
+    }
+}
+
+/* 定义从右侧淡入的动画 */
+@keyframes fadeInRight {
+    from {
+        opacity: 0; /* 初始透明度 */
+        transform: translateX(100px); /* 初始位置，幅度更大 */
+    }
+    to {
+        opacity: 1; /* 结束透明度 */
+        transform: translateX(0); /* 结束位置 */
+    }
+}
+
+/* 应用从左侧淡入的动画 */
+.fadeInLeft {
+    animation-name: fadeInLeft;
+}
+
+/* 应用从右侧淡入的动画 */
+.fadeInRight {
+    animation-name: fadeInRight;
+}
+
+/* 导航按钮样式 */
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    background-color: #46494f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.navigation-buttons button:hover {
+    background-color: #36383d;
+}
