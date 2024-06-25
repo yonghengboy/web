@@ -1,18 +1,4 @@
 @charset "UTF-8";
-
-/* ----
-
-# My Resume
-# By: Dreamer-Paul
-# Last Update: 2018.2.21
-
-一个简洁的橙色调个人简介。
-
-欢迎你加入缤奇，和我们一起改变世界。
-本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
-
----- */
-
 /* 0 - 全局
 -------------------------------- */
 
@@ -212,11 +198,59 @@ main section{
 /* 3 - 页尾
 -------------------------------- */
 footer{
-    color: #fff;
+    color: #ffffff;
     padding: 1em 0;
     text-align: center;
     background: #72655b;
 }
 footer a{
     color: inherit;
+}
+body {
+    background-color: #333; /* 设置背景颜色为暗色 */
+    color: #f4f4f4; /* 设置全局字体颜色为浅色 */
+}
+
+a {
+    color: #ffc91d; /* 设置链接的颜色为亮色 */
+}
+
+.title {
+    color: #ffffff; /* 设置标题的颜色为亮色 */
+}
+
+.title:before {
+    color: #ffc91d; /* 设置标题前图标的颜色为亮色 */
+}
+
+.skills-title {
+    color: #f4f4f4; /* 设置技能标题的字体颜色为浅色 */
+}
+
+.works-item p {
+    color: #f4f4f4; /* 设置作品描述的字体颜色为浅色 */
+}
+
+.timeline {
+    border-left: 2px #ffc91d solid; /* 设置时间线的颜色为亮色 */
+}
+
+.timeline li {
+    color: #f4f4f4; /* 设置时间线内容的字体颜色为浅色 */
+}
+
+.timeline li:before {
+    background: #ffc91d; /* 设置时间线图标的颜色为亮色 */
+}
+
+footer {
+    color: #fff; /* 设置页尾字体颜色为白色 */
+}
+/* 三个圆圈里的颜色 */
+.skills-icon {
+    background: #fff; /* 设置圆圈背景颜色为白色 */
+}
+
+.skills-icon i {
+    color: #007bff; /* 设置图标颜色为蓝色，可以根据需要调整 */
 }
