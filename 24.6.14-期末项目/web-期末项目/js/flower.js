@@ -148,10 +148,14 @@ window.onresize = function () {
     canvasSnow.height = window.innerHeight;
 }
 
+//只有当爱情页面调用 才注释 其他页面不受影响
 img.onload = function () {
-    startSakura();
+    if (window.location.href.includes('love.html')) {
+        // 注释掉 startSakura() 的执行
+    } else {
+        startSakura();
+    }
 }
-
 function stopp() {
     let child = document.getElementById("canvas_sakura");
     if (child) {

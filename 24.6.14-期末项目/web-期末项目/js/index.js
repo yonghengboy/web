@@ -59,7 +59,7 @@ const quotes = [
     "我放不下的是自己编织给自己的美好的梦，\n只是刚好梦里女主是她。",
     "岁月悠悠，总有什么值得我静静守候，\n晨初的一缕曙光，或是那远方的呢喃。",
     "我喜欢你，不管你喜欢谁，这都无法改变。",
-    "你站在窗前看风景，我在楼下看你，\n明月装饰了你的窗子，\n你装饰了别人的梦。"
+    "你站在窗前看风景，我在楼下看你，\n明月装饰了你的窗子，\n你装饰了我的梦。"
 ];
 
 
@@ -342,4 +342,15 @@ function initBackground() {
             requestAnimationFrame(animateDots); // 页面可见时重新开始动画
         }
     });
+}
+
+// 显示弹窗
+function showPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block"; // 显示弹窗
+
+    // 2秒后隐藏弹窗
+    setTimeout(function() {
+        popup.style.display = "none";
+    }, 2000);
 }

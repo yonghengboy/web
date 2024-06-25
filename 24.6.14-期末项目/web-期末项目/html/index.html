@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <!-- <link rel="stylesheet" href="../css/background.css"> -->
 </head>
+
 <body>
     <!-- 创建画布元素，用于背景动画 -->
     <canvas id="backgroundCanvas"></canvas>
@@ -22,19 +24,28 @@
         <div class="image-container content">
             <!-- 静止的圆形图片 -->
             <div class="circle-images static" id="staticCircle">
-                <div class="img back">
-                    <img src="../img/从前.jpg" alt="Image 2">
+                <div class="art-text back">
+                    <span>2024</span>
+                    <span>加油</span>
                 </div>
             </div>
+
             <!-- 会旋转的圆形图片 -->
             <div class="circle-images ih-item circle effect left_to_right" id="rotatingCircle">
                 <div class="img-container">
-                    <div class="img front" onclick="openImage('https://example.com/image1.jpg')">
+                    <div class="img front" onclick="showPopup()">
                         <img src="../img/今.jpg" alt="Image 1">
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- 弹窗容器 -->
+<div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <p>不要乱点哦~</p>
+    </div>
+</div>
         <!-- 一级标题 -->
         <h1 class="content" id="title1">欢迎来到我的世界</h1>
         <!-- 二级标题 -->
@@ -42,7 +53,15 @@
         <!-- 水平线 -->
         <hr class="content" id="line">
         <!-- 名言展示 -->
-        <div class="quote content" id="quote"></div>
+        <div class="quote-container">
+            <div class="quote content" id="quote"></div>
+            <!-- 下一句按钮 -->
+            <div class="next-quote content" id="next-quote">
+                <img src="../img/SvgSpinnersBlocksShuffle3.svg" alt="下一句" onclick="displayRandomQuote()">
+            </div>
+        </div>
+
+
         <!-- 按钮容器 -->
         <div class="button-container content" id="buttons">
             <button onclick="navigateTo('myself.html')">自序</button>
@@ -55,10 +74,10 @@
             <a href="https://github.com/yonghengboy/web" target="_blank" title="GitHub">
                 <img src="../img/AkarIconsGithubFill.svg" alt="Icon 1" class="icon">
             </a>
-            <a href="https://example.com/link2" target="_blank" title="Bilibili">
+            <a href="https://www.bilibili.com/" target="_blank" title="Bilibili">
                 <img src="../img/Fa6BrandsBilibili.svg" alt="Icon 2" class="icon">
             </a>
-            <a href="https://example.com/link3" target="_blank" title="Zhihu">
+            <a href="https://www.zhihu.com" target="_blank" title="Zhihu">
                 <img src="../img/AntDesignZhihuCircleFilled.svg" alt="Icon 3" class="icon">
             </a>
             <a href="mailto:2124997180@qq.com" title="Email">
@@ -66,8 +85,9 @@
             </a>
         </div>
     </div>
-    
+
     <!-- 引入外部脚本文件 -->
     <script src="../js/index.js" type="text/javascript"></script>
 </body>
+
 </html>

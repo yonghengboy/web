@@ -210,4 +210,74 @@ h2#title2 {
     transform: scale(1.1); /* 按钮放大至1.1倍 */
 }
 
+/* 名言容器样式 */
+.quote-container {
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    position: relative; /* 设置相对定位，以便内部元素可以绝对定位 */
+}
 
+/* 名言样式 */
+.quote {
+    text-align: center; /* 文本居中 */
+    width: 70%; /* 设置宽度，使其保持居中 */
+}
+
+/* 下一句按钮样式 */
+.next-quote {
+    position: absolute; /* 使用绝对定位 */
+    right: 5px; /* 将按钮定位在父容器的右边距为10px */
+}
+
+.next-quote img {
+    width: 32px; /* 设置按钮图标的宽度 */
+    height: 32px; /* 设置按钮图标的高度 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+}
+
+/* 引入Google字体 */
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+/* 艺术字样式 */
+.art-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #ffffff; /* 文字颜色 */
+    font-family: 'Courgette', cursive; /* 使用Google字体 */
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* 背景渐变色 */
+    border-radius: 50%; /* 圆形 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影 */
+}
+
+.art-text span {
+    display: block;
+    font-size: 2.5em; /* 文字大小 */
+    line-height: 1.2; /* 行高 */
+    padding: 0.1em 0; /* 内间距 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 文字阴影 */
+}
+
+/* 弹窗样式 */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    text-align: center;
+}
