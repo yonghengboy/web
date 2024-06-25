@@ -1,3 +1,23 @@
+/* 设置 body 和 html 元素的样式，移除默认边距和内边距，设置宽度和高度为100%，隐藏溢出内容，背景颜色为深灰色 */
+body, html {
+    margin: 0; /* 移除默认的边距 */
+    padding: 0; /* 移除默认的内边距 */
+    width: 100%; /* 设置宽度为100% */
+    height: 100%; /* 设置高度为100% */
+    overflow-y: auto; /* 允许垂直滚动 */
+    background: #30333F; /* 设置背景颜色为深灰色 */
+    color: #E0E0E0; /* 设置全局字体颜色为浅灰色 */
+}
+
+/* 设置 canvas 元素的样式，使其固定定位，覆盖整个窗口 */
+canvas {
+    position: fixed; /* 固定定位，脱离文档流 */
+    top: 0; /* 距离顶部为0 */
+    left: 0; /* 距离左侧为0 */
+    width: 100%; /* 宽度为100% */
+    height: 100%; /* 高度为100% */
+}
+
 /* 设置全局字体、背景颜色、边距和填充 */
 body {
     font-family: 'Arial', sans-serif;
@@ -20,18 +40,21 @@ body {
 .welcome-title {
     font-size: 2.5em;
     margin: 20px 0;
+    color: #FFFFFF; /* 设置标题字体颜色为白色 */
 }
 
 /* 项目标题样式 */
 .projects-header h3 {
     margin: 10px 0;
     font-size: 1.5em;
+    color: #F0F0F0; /* 设置项目标题字体颜色为淡白色 */
 }
 
 /* 正文内容样式 */
 .projects-header p {
     font-size: 1.2em;
     line-height: 1.5em;
+    color: #E0E0E0; /* 设置正文内容字体颜色为浅灰色 */
 }
 
 /* 动画基础样式 */
@@ -48,11 +71,11 @@ body {
     animation-delay: 2s; /* 延迟2秒开始动画 */
 }
 
-/* 定义从左侧淡入的动画 */
-@keyframes fadeInLeft {
+/* 定义从屏幕左侧淡入的动画 */
+@keyframes fadeInFromLeft {
     from {
         opacity: 0; /* 初始透明度 */
-        transform: translateX(-100px); /* 初始位置，幅度更大 */
+        transform: translateX(-100%); /* 初始位置在屏幕左侧外 */
     }
     to {
         opacity: 1; /* 结束透明度 */
@@ -60,11 +83,11 @@ body {
     }
 }
 
-/* 定义从右侧淡入的动画 */
-@keyframes fadeInRight {
+/* 定义从屏幕右侧淡入的动画 */
+@keyframes fadeInFromRight {
     from {
         opacity: 0; /* 初始透明度 */
-        transform: translateX(100px); /* 初始位置，幅度更大 */
+        transform: translateX(100%); /* 初始位置在屏幕右侧外 */
     }
     to {
         opacity: 1; /* 结束透明度 */
@@ -72,20 +95,28 @@ body {
     }
 }
 
-/* 应用从左侧淡入的动画 */
-.fadeInLeft {
-    animation-name: fadeInLeft;
+/* 应用从左侧淡入屏幕的动画 */
+.fadeInFromLeft {
+    animation-name: fadeInFromLeft;
+    animation-duration: 1s; /* 动画持续时间 */
+    animation-timing-function: ease-out; /* 动画速度曲线 */
+    animation-fill-mode: both; /* 保持动画结束状态 */
 }
 
-/* 应用从右侧淡入的动画 */
-.fadeInRight {
-    animation-name: fadeInRight;
+/* 应用从右侧淡入屏幕的动画 */
+.fadeInFromRight {
+    animation-name: fadeInFromRight;
+    animation-duration: 1s; /* 动画持续时间 */
+    animation-timing-function: ease-out; /* 动画速度曲线 */
+    animation-fill-mode: both; /* 保持动画结束状态 */
 }
 
 /* 导航按钮样式 */
 .navigation-buttons {
     text-align: center;
     margin-top: 20px;
+    position: relative; /* 确保按钮相对定位 */
+    z-index: 1; /* 提高z-index值，使其在动态背景之上 */
 }
 
 .navigation-buttons button {
@@ -98,5 +129,40 @@ body {
 }
 
 .navigation-buttons button:hover {
+    background-color: #36383d;
+}
+
+/* 设置 h2 和 h3 元素的基本样式 */
+h2, h3 {
+    font-size: 1.8em; /* 设置字体大小 */
+    margin: 10px 0; /* 设置上下边距 */
+    color: #FFFFFF; /* 设置字体颜色为白色 */
+    text-align: center; /* 设置文本居中对齐 */
+}
+
+/* 调整文本的上下间距 */
+h3 + h3 {
+    margin-top: 20px; /* 设置相邻 h3 元素之间的上边距 */
+}
+
+/* 返回首页按钮样式 */
+.back-to-home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.back-to-home button {
+    background-color: #46494f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.back-to-home button:hover {
     background-color: #36383d;
 }

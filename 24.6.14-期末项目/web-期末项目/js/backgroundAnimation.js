@@ -1,33 +1,35 @@
-// 动态背景效果
+// 动态背景效果初始化函数
 function initBackground() {
-    var canvas = document.getElementById('backgroundCanvas'),
-        ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.lineWidth = .3;
-    ctx.strokeStyle = (new Color(150)).style;
+    var canvas = document.getElementById('backgroundCanvas'), // 获取背景画布元素
+        ctx = canvas.getContext('2d'); // 获取2D绘图上下文
+    canvas.width = window.innerWidth; // 设置画布宽度为窗口宽度
+    canvas.height = window.innerHeight; // 设置画布高度为窗口高度
+    ctx.lineWidth = .3; // 设置线条宽度
+    ctx.strokeStyle = (new Color(150)).style; // 设置线条颜色
 
     var mousePosition = {
-        x: 30 * canvas.width / 100,
-        y: 30 * canvas.height / 100
+        x: 30 * canvas.width / 100, // 初始鼠标位置X坐标
+        y: 30 * canvas.height / 100 // 初始鼠标位置Y坐标
     };
 
-    var isMouseInside = true;
+    var isMouseInside = true; // 标记鼠标是否在画布内
 
     var dots = {
-        nb: 1500,
-        distance: 50,
-        d_radius: 100,
-        array: [],
-        randomLines: []
+        nb: 1500, // 点的数量
+        distance: 50, // 点之间的最小距离
+        d_radius: 100, // 点与鼠标之间的最小距离
+        array: [], // 存储点的数组
+        randomLines: [] // 存储随机线条的数组
     };
 
-    var maxLineLength = 80;
+    var maxLineLength = 80; // 最大线条长度
 
+    // 混合颜色组件
     function mixComponents(comp1, weight1, comp2, weight2) {
         return (comp1 * weight1 + comp2 * weight2) / (weight1 + weight2);
     }
 
+    // 平均两点之间的颜色
     function averageColorStyles(dot1, dot2) {
         var color1 = dot1.color,
             color2 = dot2.color;
@@ -38,14 +40,17 @@ function initBackground() {
         return createColorStyle(Math.floor(r), Math.floor(g), Math.floor(b));
     }
 
+    // 生成随机颜色值
     function colorValue(min) {
         return Math.floor(Math.random() * 255 + min);
     }
 
+    // 创建颜色样式
     function createColorStyle(r, g, b) {
         return 'rgba(' + r + ',' + g + ',' + b + ', 0.8)';
     }
 
+    // 颜色构造函数
     function Color(min) {
         min = min || 0;
         this.r = colorValue(min);
@@ -54,6 +59,7 @@ function initBackground() {
         this.style = createColorStyle(this.r, this.g, this.b);
     }
 
+    // 点的构造函数
     function Dot() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
@@ -66,6 +72,7 @@ function initBackground() {
         this.escapeStartTime = null;
     }
 
+    // 点的绘制方法
     Dot.prototype = {
         draw: function () {
             ctx.beginPath();
@@ -75,10 +82,12 @@ function initBackground() {
         }
     };
 
+    // 移动点的方法
     function moveDots() {
         for (var i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
 
+            // 碰到边界反弹
             if (dot.y < 0 || dot.y > canvas.height) {
                 dot.vx = dot.vx;
                 dot.vy = -dot.vy;
@@ -151,6 +160,7 @@ function initBackground() {
         }
     }
 
+    // 连接点的方法
     function connectDots() {
         for (var i = 0; i < dots.nb; i++) {
             for (var j = i + 1; j < dots.nb; j++) {
@@ -183,12 +193,14 @@ function initBackground() {
         });
     }
 
+    // 创建点的方法
     function createDots() {
         for (var i = 0; i < dots.nb; i++) {
             dots.array.push(new Dot());
         }
     }
 
+    // 绘制点的方法
     function drawDots() {
         for (var i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
@@ -196,27 +208,31 @@ function initBackground() {
         }
     }
 
+    // 动画点的方法
     function animateDots() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        moveDots();
-        connectDots();
-        drawDots();
-        requestAnimationFrame(animateDots);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+        moveDots(); // 移动点
+        connectDots(); // 连接点
+        drawDots(); // 绘制点
+        requestAnimationFrame(animateDots); // 循环调用animateDots函数
     }
 
-    createDots();
-    requestAnimationFrame(animateDots);
+    createDots(); // 创建点
+    requestAnimationFrame(animateDots); // 开始动画
 
+    // 监听鼠标移动事件，更新鼠标位置
     window.addEventListener('mousemove', function (e) {
         mousePosition.x = e.pageX;
         mousePosition.y = e.pageY;
         isMouseInside = true;
     });
 
+    // 监听鼠标离开事件，更新鼠标状态
     window.addEventListener('mouseleave', function (e) {
         isMouseInside = false;
     });
 
+    // 监听窗口大小变化事件，更新画布大小
     window.onresize = function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -224,6 +240,7 @@ function initBackground() {
         ctx.strokeStyle = (new Color(150)).style;
     };
 
+    // 监听页面可见性变化，暂停或恢复动画
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
             cancelAnimationFrame(animateDots);
