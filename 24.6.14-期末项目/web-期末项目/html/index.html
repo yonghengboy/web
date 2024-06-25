@@ -11,6 +11,12 @@
 <body>
     <!-- 创建画布元素，用于背景动画 -->
     <canvas id="backgroundCanvas"></canvas>
+
+    <!-- 退出登录按钮 -->
+    <div class="logout-button">
+        <button id="logout-btn" onclick="logout()">退出登录</button>
+    </div>
+
     <div class="container">
         <!-- 图片容器 -->
         <div class="image-container content">
@@ -41,7 +47,7 @@
         <div class="button-container content" id="buttons">
             <button onclick="navigateTo('autobiography.html')">自序</button>
             <button onclick="navigateTo('Collect.html')">收藏</button>
-            <button onclick="navigateTo('hobbies.html')">爱好</button>
+            <button onclick="navigateTo('hobby.html')">爱好</button>
             <button onclick="navigateTo('love.html')">爱情</button>
         </div>
         <!-- 图标容器 -->

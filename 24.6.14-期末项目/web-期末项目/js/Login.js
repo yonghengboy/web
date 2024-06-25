@@ -195,6 +195,16 @@ window.onload = function () {
         return false; // 阻止表单的默认提交行为
     }
 
+    // 游客登录函数
+    window.guestLogin = function(){
+        // 显示加载动画
+        loadon();
+        setTimeout(function() {
+            // 重定向到主页
+            window.location.href = "index.html";
+        }, 3000); // 设置加载动画显示时间，3秒后重定向
+    }
+
     // 加载动画控制
     var con = document.getElementById('con');
     function loadoff(){

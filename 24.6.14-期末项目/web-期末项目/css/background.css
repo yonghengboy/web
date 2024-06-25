@@ -16,3 +16,9 @@ canvas {
     width: 100%; /* 宽度为100% */
     height: 100%; /* 高度为100% */
 }
+
+    /* 确保画布在内容下方 */
+    /* 使滚动条能够捕获鼠标 */
+    #backgroundCanvas {
+        pointer-events: none; /* 允许鼠标事件穿透 canvas */
+    }

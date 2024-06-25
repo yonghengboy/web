@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的收藏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="menu-container">
+        <div id="menu-1" class="homepage home-section container">
+            <div class="home-intro text-center">
+                <h2 class="welcome-title animated fadeInLeft">我的收藏
+                    <p>My Collection.</p>
+                </h2>
+                <div style="border-bottom: 2px solid #46494f;"></div>
+                <div class="projects-header">
+                    <h3 class="animated fadeInRight">散文诗</h3>
+                    <h3 class="animated fadeInRight">Classical poetry</h3><br /><br/>
+                    <h3 class="animated fadeInLeft">如果你不曾来过</h3>
+                    <p class="animated fadeInLeft">
+                        如果你不曾来过，我的笑容很灿烂<br />没心没肺的玩着自己喜欢的事<br />
+                        不用管时间，也不用管谁的悲欢<br />如果你不曾来过，我的性格很阳光<br/>
+                        不会任性的发脾气，也不会彻夜不眠<br/>不用伪装悲伤，也不用故作可怜<br/>
+                        我可以在星期天的清晨等一片叶子<br/>遥望十五的月亮勾画山河的峰峦<br/>
+                        我的心中塞满了童话的故事<br/>梦乡里我读了一夜的书<br/>
+                        可是后来清晨的叶子总早一步落下<br/>十五的月亮总是不够圆<br/>
+                        梦成了你的专属，我总是强制闭眼<br/>去年，我在陌生的城市盯着一个身影<br/>
+                        凝望了许久，也不敢叫一声亲爱的<br/>要不是你，我的情感怎么渲染<br/>
+                        要是你，也不知如何做才不手忙脚乱<br/>你消失在人群，我才敢挥手<br/>
+                        我笑的可甜，只是一阵酸涩<br/>将曾经的你，轻轻从心里拿出来安放<br/>
+                        我其实在等，明知等不到<br/>可过剩的爱，剩了一辈子的余量<br/>
+                        我又怎能向别人开仓，那是你一个人的田<br/>无论丰产还是秋荒，只属于你的清扬<br/>
+                        如果你不曾来过，我的生命一片荒芜<br/>单调色从不斑斓，瘦弱的黑白线从不宽阔<br/>
+                        也不会有极致的喜悦，看一眼照片都心花怒放<br/>如果你不曾来过，我的希望一片空白<br/>
+                        听不出情歌的滋味，体会不出泪水咸淡的忧伤<br/>也不会记得拥抱，想融化在你的身旁<br/>
+                        光明路和芒山路我终于记住了<br/>等你的每一天，我走过好几遍<br/>
+                        如果有下次，我认路了<br/>不用你送我，我送你，陪着才能走完<br/>
+                        快到第一次相遇的时间了<br/>我就在原地，怎样我都不怪你<br/>
+                        我习惯了等你的出现<br/>来，不来，过去和现在都不是我的终点<br/>
+                        我将你存进银河，满目星辉都是你<br/>我将你揉进风尘，四季轮换都相遇
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

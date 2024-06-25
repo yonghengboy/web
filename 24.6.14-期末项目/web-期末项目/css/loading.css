@@ -1,27 +1,24 @@
-.loading-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
+/* loading.css */
+.con {
+    margin-top: -100vh;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-    z-index: 9999; /* 确保加载动画在最上层 */
-    display: none; /* 默认隐藏 */
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* 减少模糊效果 */
+    display: none;
 }
 
-.loading {
+.load {
     position: relative;
     display: flex;
 }
 
-.loading .dot {
+.load .dot {
     position: relative;
     width: 20px;
     height: 20px;
+    background-attachment: fixed;
     background: rgb(120, 214, 214);
     margin: 20px 0 0 20px;
     border-radius: 50%;

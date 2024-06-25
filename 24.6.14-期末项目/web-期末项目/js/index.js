@@ -8,6 +8,11 @@ function navigateTo(page) {
     window.location.href = page; // 跳转到指定的页面
 }
 
+// 退出登录并跳转到 login.html
+function logout() {
+    window.location.href = 'login.html'; // 跳转到登录页面
+}
+
 // 等待整个文档内容加载完毕后执行
 document.addEventListener("DOMContentLoaded", function() {
     // 获取旋转圆形图片和静止圆形图片的元素
@@ -327,4 +332,3 @@ function initBackground() {
         }
     });
 }
-

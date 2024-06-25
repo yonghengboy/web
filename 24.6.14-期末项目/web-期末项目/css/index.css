@@ -184,3 +184,28 @@ h2#title2 {
     transform: scale(1.2); /* 悬停时图标放大至1.2倍 */
 }
 
+/* 设置 logout-button 类的样式，固定在右上角 */
+.logout-button {
+    position: fixed; /* 固定定位 */
+    top: 20px; /* 距离顶部20px */
+    right: 20px; /* 距离右侧20px */
+    z-index: 2; /* 确保在最前面 */
+}
+
+/* 设置 logout-button 下按钮的样式 */
+.logout-button button {
+    background-color: #FF6347; /* 背景颜色为番茄色 */
+    color: white; /* 字体颜色为白色 */
+    border: none; /* 移除边框 */
+    padding: 10px 20px; /* 内边距为10px 20px */
+    font-size: 16px; /* 字体大小为16px */
+    border-radius: 5px; /* 边框圆角半径为5px */
+    cursor: pointer; /* 鼠标悬停时显示手型光标 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 设置按钮在悬停时的样式 */
+.logout-button button:hover {
+    background-color: #FF4500; /* 背景颜色变为橙红色 */
+    transform: scale(1.1); /* 按钮放大至1.1倍 */
+}
