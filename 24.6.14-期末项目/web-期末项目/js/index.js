@@ -203,8 +203,8 @@ function initBackground() {
                         dot.attractionTime = 0; // 重置被磁吸的时间
                     }
 
-                    // 当被磁吸超过五秒后，有概率挣脱磁吸，时间越久概率越大
-                    if (dot.attractionTime > 500 && Math.random() < (dot.attractionTime - 500) / 1000) {
+                    // 当被磁吸超过3秒后，有概率挣脱磁吸，时间越久概率越大
+                    if (dot.attractionTime > 300 && Math.random() < (dot.attractionTime - 300) / 1000) {
                         dot.isEscaping = true; // 标记为逃离状态
                         dot.vx += distanceToMouseX * 0.05; // 逃离时速度加快
                         dot.vy += distanceToMouseY * 0.05; // 逃离时速度加快

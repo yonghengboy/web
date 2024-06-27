@@ -3,7 +3,7 @@
     var screenHeight = window.innerHeight; // 获取屏幕高度
     var speed = 20; // 雪花下落的速度，值越小速度越快
     var snowPileHeight = 0; // 积雪高度
-    var maxSnowPileHeight = 100; // 最大积雪高度
+    var maxSnowPileHeight = 1; // 最大积雪高度
 
     function Snow(size, downSize) {
         this.box = document.getElementById("box"); // 获取容器元素

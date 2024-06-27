@@ -1,0 +1,23 @@
+/* 页脚 */
+footer {
+    padding: 20px;
+    color: #f0f0f0; /* 浅色字体 */
+}
+
+.blog-header {
+    font-family: 'Arial', sans-serif; /* 字体样式 */
+    font-size: 12px; /* 字体大小 */
+}
+
+.blog-header p {
+    margin: 0;
+    padding: 10px;
+    line-height: 1.5; /* 行高 */
+    color: #ddd; /* 适中的浅色字体 */
+    border-top: 1px solid #444; /* 顶部边框 */
+    border-bottom: 1px solid #444; /* 底部边框 */
+}
+
+.text-center {
+    text-align: center; /* 居中对齐 */
+}

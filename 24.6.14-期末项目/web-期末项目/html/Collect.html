@@ -6,10 +6,19 @@
     <title>主页</title>
     <link rel="stylesheet" href="../css/Collect.css">
     <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!-- 创建画布元素，用于背景动画 -->
     <canvas id="backgroundCanvas"></canvas>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <ul id="content-list">
+                <!-- 动态生成的文章标题将插入这里 -->
+            </ul>
+        </div>
+    </div>
+    <div id="sidebar-toggle" class="sidebar-toggle">目录</div>
     <div class="container">
         <div id="menu-container">
             <div id="menu-1" class="homepage home-section container">
@@ -31,6 +40,9 @@
         </div>
         <div class="navigation-buttons">
             <button id="prev-btn">上一篇</button>
+            <div id="random-btn" class="nav-icon">
+                <img src="../img/SvgSpinnersBlocksShuffle3.svg" alt="随机图标" class="icon">
+            </div>
             <button id="next-btn">下一篇</button>
         </div>
     <!-- 返回首页按钮 -->
@@ -38,6 +50,11 @@
         <button id="back-to-home-btn">返回首页</button>
     </div>
 
+    <footer>
+        <div class="blog-header text-center">
+                    <p>2024 @ 新的地方&nbsp;&nbsp;新的开始&nbsp;&nbsp;新的希望&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        </div>
+    </footer>
     <!-- 引入外部脚本文件 -->
     <script src="../js/backgroundAnimation.js" type="text/javascript"></script>
     <script src="../js/Collect.js" type="text/javascript"></script>

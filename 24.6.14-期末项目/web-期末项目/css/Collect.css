@@ -166,3 +166,138 @@ h3 + h3 {
 .back-to-home button:hover {
     background-color: #36383d;
 }
+
+
+
+/* 设置导航按钮容器的样式，使其内容居中对齐 */
+.navigation-buttons {
+    text-align: center; /* 水平居中对齐 */
+    margin-top: 20px; /* 设置顶部边距 */
+    position: relative; /* 确保按钮相对定位 */
+    z-index: 1; /* 提高z-index值，使其在动态背景之上 */
+}
+
+/* 设置按钮的基本样式 */
+.navigation-buttons button {
+    background-color: #46494f; /* 设置背景颜色 */
+    color: white; /* 设置字体颜色 */
+    border: none; /* 移除边框 */
+    padding: 10px 20px; /* 设置内边距 */
+    margin: 0 10px; /* 设置左右外边距 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+}
+
+/* 设置按钮悬停时的背景颜色 */
+.navigation-buttons button:hover {
+    background-color: #36383d; /* 悬停时的背景颜色 */
+}
+
+/* 设置图标容器的样式，使其看起来像按钮 */
+.nav-icon {
+    display: inline-block; /* 内联块级元素 */
+    padding: 10px; /* 设置内边距 */
+    margin: 0 10px; /* 设置左右外边距 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+    width: 50px; /* 设置宽度 */
+    height: 50px; /* 设置高度 */
+    text-align: center; /* 内容居中对齐 */
+    vertical-align: middle; /* 垂直对齐 */
+    margin-top: 20px; /* 设置距离顶部的边距 */
+}
+
+/* 设置图标的样式 */
+.nav-icon .icon {
+    width: 32px; /* 设置图标的宽度 */
+    height: 32px; /* 设置图标的高度 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+}
+
+
+/* 目录容器的基本样式 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px; /* 隐藏在屏幕左侧 */
+    width: 250px;
+    height: 100%;
+    background-color: transparent; /* 全透明背景 */
+    overflow-x: hidden;
+    transition: left 0.5s; /* 平滑过渡效果 */
+    z-index: 2; /* 确保目录在其他内容之上 */
+    border-right: 2px solid rgba(255, 255, 255, 0.5); /* 添加右边框 */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* 添加阴影效果 */
+}
+
+/* 目录内容的样式 */
+.sidebar-content {
+    padding: 20px;
+    color: white;
+}
+
+/* 目录列表项的样式 */
+.sidebar-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-content ul li {
+    margin: 10px 0;
+}
+
+/* 标题链接的样式及悬停效果 */
+.sidebar-content ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 8px; /* 设置圆角 */
+    transition: color 0.3s, background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s; /* 平滑过渡效果 */
+}
+
+.sidebar-content ul li a:hover {
+    color: #f0f0f0; /* 悬停时的字体颜色 */
+    background-color: rgba(255, 255, 255, 0.1); /* 悬停时的背景颜色 */
+    transform: scale(1.1); /* 悬停时放大效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+}
+
+
+/* 目录提示按钮的样式 */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    padding: 10px 20px;
+    background-color: #46494f;
+    color: white;
+    cursor: pointer;
+    z-index: 3; /* 确保按钮在其他内容之上 */
+    transition: left 0.5s; /* 平滑过渡效果 */
+    border-radius: 0 5px 5px 0; /* 圆角效果 */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* 添加阴影效果 */
+}
+
+/* 返回首页按钮样式 */
+.back-to-home {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.back-to-home button {
+    background-color: #46494f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.back-to-home button:hover {
+    background-color: #36383d;
+}
+
+

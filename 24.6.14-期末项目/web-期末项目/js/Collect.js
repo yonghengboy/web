@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       今夜月色真美的含义。`
         },
         {
-            title: '有月亮才知道',
+            title: '月亮才知道',
             content: `有月亮才知道，<br />
                       我望向月亮的时候，<br />
                       其实是在想你。<br />
@@ -172,51 +172,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentIndex = 0; // 当前显示的内容索引
 
-    // 更新内容显示函数
+    /**
+     * 更新内容显示函数
+     * 从 contentLibrary 中根据 currentIndex 获取当前内容，并将其插入到内容容器中
+     */
     function updateContent() {
-        // 获取内容容器
-        const contentContainer = document.getElementById('content-container');
-        // 获取当前内容
-        const currentContent = contentLibrary[currentIndex];
+        const contentContainer = document.getElementById('content-container'); // 获取内容容器
+        const currentContent = contentLibrary[currentIndex]; // 获取当前内容
         
-        // 将当前内容插入到内容容器中
+        // 将当前内容插入到内容容器中，添加动画效果
         contentContainer.innerHTML = `
             <h3 class="animated fadeInFromRight delay-1s">${currentContent.title}</h3>
             <p class="animated fadeInFromRight delay-2s">${currentContent.content}</p>
         `;
     }
 
+    // 动态生成目录
+    function generateSidebar() {
+        const contentList = document.getElementById('content-list');
+        contentLibrary.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.textContent = item.title;
+            link.href = '#';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentIndex = index;
+                updateContent();
+            });
+            listItem.appendChild(link);
+            contentList.appendChild(listItem);
+        });
+    }
+
+    // 初始化页面内容和目录
+    function onPageLoad() {
+        updateContent(); // 确保页面加载时更新内容
+        generateSidebar(); // 生成目录
+    }
+
     // 上一篇按钮点击事件
     document.getElementById('prev-btn').addEventListener('click', () => {
         // 更新当前内容索引，循环显示内容
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : contentLibrary.length - 1;
-        updateContent();
+        updateContent(); // 更新内容显示
     });
 
     // 下一篇按钮点击事件
     document.getElementById('next-btn').addEventListener('click', () => {
         // 更新当前内容索引，循环显示内容
         currentIndex = (currentIndex < contentLibrary.length - 1) ? currentIndex + 1 : 0;
-        updateContent();
+        updateContent(); // 更新内容显示
     });
 
-    // 页面加载时显示内容并依次显示内容
-    function onPageLoad() {
-        // 确保页面加载时更新内容
-        updateContent();
-        // 同时显示标题和文章
-        const titles = document.querySelectorAll('.welcome-title, h3.animated');
-        titles.forEach((element, index) => {
-            setTimeout(() => {
-                element.classList.add('show');
-            }, index * 100); // 每个元素的延迟时间
-        });
-    }
+    // 随机文章按钮点击事件
+    document.getElementById('random-btn').addEventListener('click', () => {
+        // 随机生成一个索引
+        currentIndex = Math.floor(Math.random() * contentLibrary.length);
+        updateContent(); // 更新内容显示
+    });
 
-    // 返回首页按钮点击事件
-    document.getElementById('back-to-home-btn').addEventListener('click', () => {
+    // 鼠标靠近目录区域时显示目录
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+
+    sidebarToggle.addEventListener('mouseover', () => {
+        sidebar.style.left = '0'; // 显示目录
+        sidebarToggle.style.left = '250px'; // 调整目录提示按钮位置
+    });
+
+    // 鼠标离开目录区域时隐藏目录
+    sidebar.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+            sidebar.style.left = '-260px'; // 隐藏目录
+            sidebarToggle.style.left = '0'; // 恢复目录提示按钮位置
+        }, 500); // 延迟0.5秒
+    });
+
+      // 返回首页按钮点击事件
+      document.getElementById('back-to-home-btn').addEventListener('click', () => {
         window.location.href = 'index.html';
     });
+
 
     // 确保页面加载时执行 onPageLoad 函数
     onPageLoad();
