@@ -18,61 +18,53 @@
     <canvas id="backgroundCanvas"></canvas>
 
 
-    <!-- 提示框HTML -->
-    <div id="firstPrompt" class="prompt">
-      <p>你似乎来到了没有爱情存在的荒原</p>
-      <small>是否离开</small>
-      <button onclick="leave()">离开</button>
-      <button onclick="closeFirstPrompt()">再找找</button>
-    </div>
+  <!-- 提示框HTML -->
+  <div id="firstPrompt" class="prompt">
+    <p>你似乎来到了没有爱情存在的荒原</p>
+    <small>是否离开</small>
+    <button onclick="leaveDirect()">离开</button>
+    <button onclick="closeFirstPrompt()">再找找</button>
+  </div>
 
-    <div id="secondPrompt" class="prompt">
-      <p>找不到啦，走吧！！！</p>
-      <button onclick="leave()">离开</button>
-      <button onclick="closeSecondPrompt()">再找找</button>
-    </div>
+  <div id="secondPrompt" class="prompt">
+    <p>找不到啦，走吧！！！</p>
+    <button onclick="leaveDirect()">离开</button>
+    <button onclick="closeSecondPrompt()">再找找</button>
+  </div>
 
-    <div id="thirdPrompt" class="prompt">
-      <p>这地方太冷清了，你确定不离开吗？</p>
-      <small>继续寻找爱情的火花</small>
-      <button onclick="leave()">离开</button>
-      <button onclick="closeThirdPrompt()">继续寻找</button>
-    </div>
+  <div id="thirdPrompt" class="prompt">
+    <p>这地方太冷清了，你确定不离开吗？</p>
+    <small>继续寻找爱情的火花</small>
+    <button onclick="leaveDirect()">离开</button>
+    <button onclick="closeThirdPrompt()">继续寻找</button>
+  </div>
 
-    <div id="fourthPrompt" class="prompt">
-      <p>爱情可能藏在转角处，再走走看吧？</p>
-      <small>前方也许有惊喜</small>
-      <button onclick="leave()">离开</button>
-      <button onclick="closeFourthPrompt()">再走走</button>
-    </div>
+  <div id="fourthPrompt" class="prompt">
+    <p>爱情可能藏在转角处，再走走看吧？</p>
+    <small>前方也许有惊喜</small>
+    <button onclick="leaveDirect()">离开</button>
+    <button onclick="closeFourthPrompt()">再走走</button>
+  </div>
 
-<!-- 添加第五个提示框 -->
-<div id="fifthPrompt" class="prompt">
-  <p>你似乎找到了什么，是否离开？</p>
-  <small>希望就在前方</small>
-  <button onclick="leave()">离开</button>
-  <button onclick="closeFifthPrompt()">不放弃</button>
+  <!-- 添加第五个提示框 -->
+  <div id="fifthPrompt" class="prompt">
+    <p>你似乎找到了什么，是否离开？</p>
+    <small>希望就在前方</small>
+    <button onclick="leaveDirect()">离开</button>
+    <button onclick="closeFifthPrompt()">不放弃</button>
+  </div>
+
+  <div id="sixthPrompt" class="prompta">
+    <p>小丑，你是找不到的，哈哈哈哈哈哈哈~~~</p>
+    <div class="button-container">
+        <button id="notGiveUpButton" class="button" onclick="showFinalPrompt()">我不会放弃</button>
+        <button id="leaveButton" class="button" onclick="showFinalPrompt()">离开</button>
+    </div>
 </div>
-
-
-
-    <div id="fifthPrompt" class="prompt">
-      <p>你确定要放弃了吗？也许它就在不远处！</p>
-      <small>希望就在前方</small>
-      <button onclick="leave()">离开</button>
-      <button onclick="closeFifthPrompt()">不放弃</button>
-    </div>
-
-    <div id="sixthPrompt" class="prompt">
-        <p>小丑，你是找不到的，哈哈哈哈哈哈哈~~~</p>
-        <button onclick="leave()">离开</button>
-        <button onclick="leave()">离开</button>
-      </div>
   
-      <div id="finalPrompt" class="prompt">
-        <p>你灰溜溜的离开了</p>
-      </div>
-      
+  <div id="finalPrompt" class="prompt">
+      <p>你灰溜溜的离开了</p>
+  </div>
 
   <svg class="me404" viewbox="0 0 1000 480">
 <path id="cloud" class="st0" d="M658.4,345.2c-10.9,0-19.7-8.8-19.7-19.7c0-10.9,8.8-19.7,19.7-19.7h50.1c9.9-1.5,17.5-10,17.5-20.3
