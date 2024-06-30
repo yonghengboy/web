@@ -11,11 +11,34 @@
     <link rel="stylesheet" href="../css/hobby-animate.css">
     <link rel="stylesheet" href="../css/hobby-templatemo_style.css">
     <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../css/music.css"> <!-- 引入CSS文件 -->
 </head>
 
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
     <!-- 创建画布元素，用于背景动画 -->
     <canvas id="backgroundCanvas"></canvas>
+
+    
+    <!-- 音乐播放器 -->
+    <div id="player-container">
+        <div id="song-list">
+            <ul id="songs">
+                <!-- JavaScript will populate songs here -->
+            </ul>
+        </div>
+        <div id="controls">
+            <button id="prev-btn">上一曲</button> <!-- 上一曲按钮 -->
+            <button id="play-pause-btn">暂停</button> <!-- 播放/暂停按钮 -->
+            <button id="next-btn">下一曲</button> <!-- 下一曲按钮 -->
+            <div id="shuffle-btn-container">
+                <img id="shuffle-btn" src="../img/SvgSpinnersBlocksShuffle3.svg" alt="随机播放"> <!-- 随机播放按钮 -->
+            </div>
+        </div>
+    </div>
+    <div id="song-hint" class="sidebar-toggle">音乐播放器</div> <!-- 提示框 -->
+    <div id="notification">正在播放</div> <!-- 通知框 -->
+    
+
 
     <!-- 页头 -->
     <header class="site-header container animated fadeInDown">
@@ -148,6 +171,7 @@
     
     <!-- 引入外部脚本文件 -->
     <script src="../js/background -2 .js" type="text/javascript"></script>
+    <script src="../js/music.js"></script> <!-- 引入JavaScript文件 -->
     <script>
         // 确保脚本在页面加载后执行
         document.addEventListener("DOMContentLoaded", function () {

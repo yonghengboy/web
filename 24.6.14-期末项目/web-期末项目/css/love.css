@@ -118,3 +118,158 @@
     background-color: #0056b3;
   }
   
+/* 按钮通用样式 */
+.button {
+  padding: 10px 20px; /* 内边距，上下10像素，左右20像素 */
+  margin: 5px; /* 按钮之间的间距 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  position: absolute; /* 绝对定位 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: #ffffff; /* 按钮文字颜色 */
+  border: none; /* 无边框 */
+  border-radius: 5px; /* 边角圆润 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按钮阴影效果 */
+  font-size: 16px; /* 字体大小 */
+  transition: background-color 0.3s, transform 0.3s; /* 背景颜色和变换的过渡效果 */
+}
+
+.button:hover {
+  background-color: #0056b3; /* 鼠标悬停时按钮背景颜色 */
+  transform: scale(1.05); /* 鼠标悬停时按钮放大效果 */
+}
+
+/* 返回首页按钮的样式 */
+.return-home-button {
+  position: fixed; /* 固定定位，脱离文档流 */
+  bottom: 20px; /* 距离底部20像素 */
+  right: 20px; /* 距离右侧20像素 */
+  padding: 10px 20px; /* 内边距，上下10像素，左右20像素 */
+  background-color: #4CAF50; /* 按钮背景颜色 */
+  color: white; /* 按钮文字颜色 */
+  border: none; /* 无边框 */
+  border-radius: 5px; /* 边角圆润 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  font-size: 16px; /* 字体大小 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按钮阴影效果 */
+  transition: background-color 0.3s, transform 0.3s; /* 背景颜色和变换的过渡效果 */
+}
+
+.return-home-button:hover {
+  background-color: #45a049; /* 鼠标悬停时按钮背景颜色 */
+  transform: scale(1.05); /* 鼠标悬停时按钮放大效果 */
+}
+
+/* 提示框样式 */
+.prompt {
+  display: none; /* 隐藏提示框 */
+  position: fixed; /* 固定定位 */
+  top: 50%; /* 距离顶部50% */
+  left: 50%; /* 距离左侧50% */
+  transform: translate(-50%, -50%); /* 水平垂直居中 */
+  background-color: rgba(255, 255, 255, 0.95); /* 提示框背景颜色，带透明度 */
+  padding: 20px; /* 内边距20像素 */
+  border: 2px solid #ccc; /* 边框颜色和宽度 */
+  border-radius: 10px; /* 边角圆润 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 提示框阴影效果 */
+  z-index: 1000; /* 置于顶层 */
+  width: 400px; /* 宽度400像素 */
+  text-align: center; /* 文字居中 */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 显示效果过渡 */
+}
+
+.prompt.show {
+  display: block; /* 显示提示框 */
+  opacity: 1; /* 完全不透明 */
+  transform: translate(-50%, -50%) scale(1); /* 提示框放大到正常尺寸 */
+}
+
+.prompt p {
+  font-size: 18px; /* 文字大小 */
+  margin-bottom: 15px; /* 底部外边距15像素 */
+  color: #333; /* 文字颜色 */
+}
+
+.prompt small {
+  display: block; /* 块级显示 */
+  margin-bottom: 25px; /* 底部外边距25像素 */
+  color: #666; /* 文字颜色 */
+}
+
+.prompt button {
+  margin: 10px; /* 按钮之间的间距 */
+  padding: 10px 20px; /* 内边距，上下10像素，左右20像素 */
+  border: none; /* 无边框 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: white; /* 按钮文字颜色 */
+  border-radius: 5px; /* 边角圆润 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按钮阴影效果 */
+  font-size: 16px; /* 字体大小 */
+  transition: background-color 0.3s, transform 0.3s; /* 背景颜色和变换的过渡效果 */
+}
+
+.prompt button:hover {
+  background-color: #0056b3; /* 鼠标悬停时按钮背景颜色 */
+  transform: scale(1.05); /* 鼠标悬停时按钮放大效果 */
+}
+
+/* 小丑提示框 */
+/* 第六个提示框的样式 */
+.prompta {
+  display: none; /* 初始隐藏 */
+  position: fixed; /* 固定定位 */
+  top: 50%; /* 距离顶部50% */
+  left: 50%; /* 距离左侧50% */
+  transform: translate(-50%, -50%); /* 水平垂直居中 */
+  background-color: rgba(255, 255, 255, 0.95); /* 提示框背景颜色，带透明度 */
+  padding: 30px; /* 内边距30像素 */
+  border: 2px solid #ccc; /* 边框颜色和宽度 */
+  border-radius: 10px; /* 边角圆润 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 提示框阴影效果 */
+  z-index: 1000; /* 置于顶层 */
+  width: 400px; /* 宽度400像素 */
+  text-align: center; /* 文字居中 */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 显示效果过渡 */
+}
+
+/* 提示框显示样式 */
+.prompta.show {
+  display: block; /* 显示提示框 */
+  opacity: 1; /* 完全不透明 */
+  transform: translate(-50%, -50%) scale(1); /* 提示框放大到正常尺寸 */
+}
+
+/* 提示框内部文本样式 */
+.prompta p {
+  font-size: 18px; /* 文字大小 */
+  margin-bottom: 80px; /* 底部外边距20像素 */
+  color: #333; /* 文字颜色 */
+}
+
+/* 按钮容器样式 */
+/* 按钮 居中 但有冲突无法修复 待解决 */
+.button-container {
+  display: flex; /* 使用Flexbox布局 */
+  justify-content: center; /* 按钮居居中 */
+  margin-top: auto; /* 将按钮容器推到提示框底部 */
+}
+
+/* 提示框按钮样式 */
+.prompta .button {
+  padding: 10px 20px; /* 内边距，上下10像素，左右20像素 */
+  margin: 50px 20px; /* 按钮之间的间距，左右10像素 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: #ffffff; /* 按钮文字颜色 */
+  border: none; /* 无边框 */
+  border-radius: 5px; /* 边角圆润 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 按钮阴影效果 */
+  font-size: 16px; /* 字体大小 */
+  transition: background-color 0.3s, transform 0.3s; /* 背景颜色和变换的过渡效果 */
+}
+
+/* 按钮悬停效果 */
+.prompta .button:hover {
+  background-color: #0056b3; /* 鼠标悬停时按钮背景颜色 */
+  transform: scale(1.05); /* 鼠标悬停时按钮放大效果 */
+}

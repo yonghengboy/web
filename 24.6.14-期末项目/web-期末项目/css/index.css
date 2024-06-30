@@ -24,6 +24,15 @@ canvas {
     color: white; /* 设置文本颜色为白色 */
     text-align: center; /* 文本居中对齐 */
     margin-top: 20px; /* 顶部外边距为20px */
+    opacity: 0; /* 初始透明度为0 */
+    transform: translateY(100px); /* 初始位置为向下偏移100px */
+    transition: all 0.5s ease-out; /* 设置过渡效果，持续时间为0.5秒 */
+}
+
+/* 设置 content 类的显示样式，当添加 show 类时，透明度变为1，位置回到原始位置 */
+.content.show {
+    opacity: 1; /* 显示时的透明度为1 */
+    transform: translateY(0); /* 显示时的位置为原始位置 */
 }
 
 /* 设置 body 元素的样式，使用 flex 布局，子元素垂直居中对齐 */
@@ -36,19 +45,6 @@ body {
     margin: 0; /* 移除默认的外边距 */
     font-family: Arial, sans-serif; /* 设置字体为 Arial，备选字体为 sans-serif */
     overflow: hidden; /* 防止页面滚动 */
-}
-
-/* 设置 content 类的初始动画样式，初始透明度为0，初始位置为向下偏移100px，过渡效果持续0.5秒 */
-.content {
-    opacity: 0; /* 初始透明度为0 */
-    transform: translateY(100px); /* 初始位置为向下偏移100px */
-    transition: all 0.5s ease-out; /* 设置过渡效果，持续时间为0.5秒 */
-}
-
-/* 设置 content 类的显示样式，当添加 show 类时，透明度变为1，位置回到原始位置 */
-.content.show {
-    opacity: 1; /* 显示时的透明度为1 */
-    transform: translateY(0); /* 显示时的位置为原始位置 */
 }
 
 /* 设置 image-container 类的样式，居中对齐，宽高为160px */
@@ -155,20 +151,47 @@ body {
     font-style: italic; /* 字体样式为斜体 */
 }
 
-/* 设置一级标题的样式，字体大小为2.5em，底部外边距为10px，字体颜色为金黄色，添加阴影 */
+/* 设置一级标题的样式，带有立体感 */
 h1#title1 {
-    font-size: 2.5em; /* 字体大小为2.5em */
-    margin-bottom: 10px; /* 底部外边距为10px */
+    font-size: 3em; /* 字体大小为3em */
     color: #FFD700; /* 金黄色 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+    text-align: center; /* 文本居中 */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), /* 添加立体感的阴影 */
+                 -2px -2px 5px rgba(255, 255, 255, 0.3); /* 反方向的高光阴影 */
+    margin-bottom: 20px; /* 底部外边距为20px */
+    animation: fadeIn 2s ease-in; /* 淡入动画，持续2秒 */
 }
 
-/* 设置二级标题的样式，字体大小为1.8em，底部外边距为20px，字体颜色为天蓝色，添加阴影 */
+/* 设置二级标题的样式，带有立体感 */
 h2#title2 {
-    font-size: 1.8em; /* 字体大小为1.8em */
-    margin-bottom: 20px; /* 底部外边距为20px */
+    font-size: 2.0em; /* 字体大小为2.0em */
     color: #87CEEB; /* 天蓝色 */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+    text-align: center; /* 文本居中 */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), /* 添加立体感的阴影 */
+                 -2px -2px 5px rgba(255, 255, 255, 0.3); /* 反方向的高光阴影 */
+    margin-bottom: 30px; /* 底部外边距为30px */
+    animation: fadeIn 3s ease-in; /* 淡入动画，持续3秒 */
+}
+
+/* 定义淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 初始透明度为0 */
+    }
+    to {
+        opacity: 1; /* 最终透明度为1 */
+    }
+}
+
+
+/* 定义淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* 初始透明度为0 */
+    }
+    to {
+        opacity: 1; /* 最终透明度为1 */
+    }
 }
 
 /* 设置 icon 类的样式，宽度为24px，高度为24px，外边距为10px */

@@ -1,0 +1,182 @@
+#player-container {
+    position: fixed; /* 固定位置 */
+    left: -300px; /* 初始位置在左侧不可见 */
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+    width: 300px; /* 宽度为300px */
+    background-color: transparent; /* 背景透明 */
+    color: white; /* 字体颜色为白色 */
+    transition: left 0.5s ease, background-color 0.5s ease; /* 添加动画效果 */
+    box-shadow: none; /* 移除阴影效果 */
+    border: 2px solid; /* 添加边框 */
+    border-image: linear-gradient(45deg, #00ffcc, #ff00cc) 1; /* 渐变边框 */
+    border-radius: 0 15px 15px 0; /* 圆角边框 */
+    overflow: hidden; /* 隐藏溢出的内容 */
+}
+
+#player-container:hover {
+    background-color: transparent; /* 鼠标悬停时背景透明 */
+}
+
+#song-list {
+    padding: 20px; /* 内边距 */
+    color: white; /* 字体颜色为白色 */
+    background-color: transparent; /* 背景透明 */
+    border-radius: 0 10px 10px 0; /* 圆角边框 */
+    overflow-y: auto; /* 添加垂直滚动条 */
+    max-height: 300px; /* 最大高度 */
+}
+
+/* 美化滚动条 */
+#song-list::-webkit-scrollbar {
+    width: 8px; /* 滚动条宽度 */
+}
+
+#song-list::-webkit-scrollbar-track {
+    background: #1e1e1e; /* 滚动条轨道背景颜色 */
+    border-radius: 10px; /* 圆角 */
+}
+
+#song-list::-webkit-scrollbar-thumb {
+    background: #00ffcc; /* 滚动条滑块颜色 */
+    border-radius: 10px; /* 圆角 */
+}
+
+#song-list::-webkit-scrollbar-thumb:hover {
+    background: #555; /* 鼠标悬停时滑块颜色 */
+}
+
+#controls {
+    display: flex; /* 使用flex布局 */
+    justify-content: space-around; /* 子元素均匀分布 */
+    margin-top: 10px; /* 上边距 */
+    border-top: 1px solid transparent; /* 上边框透明 */
+    padding-top: 10px; /* 内边距 */
+}
+
+#song-hint {
+    position: fixed; /* 固定位置 */
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+    padding: 10px; /* 内边距 */
+    background-color: transparent; /* 背景透明 */
+    color: white; /* 字体颜色 */
+    cursor: pointer; /* 鼠标样式 */
+    z-index: 3; /* 层叠顺序 */
+    transition: left 0.5s ease; /* 动画效果 */
+    border-radius: 0 10px 10px 0; /* 圆角边框 */
+    box-shadow: none; /* 移除阴影效果 */
+    border: 2px solid; /* 添加边框 */
+    border-image: linear-gradient(45deg, #00ffcc, #ff00cc) 1; /* 渐变边框 */
+    writing-mode: vertical-rl; /* 文字垂直排列 */
+    text-orientation: upright; /* 文字方向 */
+    text-align: center; /* 文字居中 */
+}
+
+#song-hint span {
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #00ffff); /* 渐变文字 */
+    -webkit-background-clip: text; /* 裁剪背景以显示文字 */
+    color: transparent; /* 文字颜色透明 */
+    font-weight: bold; /* 文字加粗 */
+}
+
+#notification {
+    position: fixed; /* 固定位置 */
+    top: 20px; /* 距顶部20px */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 水平居中 */
+    padding: 10px 20px; /* 内边距 */
+    background-color: #444; /* 背景颜色 */
+    color: white; /* 字体颜色 */
+    border-radius: 5px; /* 圆角边框 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+    display: none; /* 默认隐藏 */
+    z-index: 4; /* 层叠顺序 */
+}
+
+ul {
+    list-style: none; /* 去掉列表样式 */
+    padding: 0; /* 去掉内边距 */
+    margin: 0; /* 去掉外边距 */
+}
+
+li {
+    margin: 10px 0; /* 垂直间距 */
+    padding: 10px; /* 内边距 */
+    background-color: rgba(255, 255, 255, 0.1); /* 背景半透明白色 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer; /* 鼠标样式 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 动画效果 */
+}
+
+li:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 鼠标悬停时背景颜色变化 */
+    transform: scale(1.05); /* 鼠标悬停时放大效果 */
+}
+
+li.playing {
+    background-color: rgba(255, 255, 255, 0.2); /* 当前播放项背景颜色 */
+    border-left: 4px solid #00ffcc; /* 左边框颜色 */
+    padding-left: 6px; /* 内边距 */
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #00ffff); /* 渐变文字 */
+    -webkit-background-clip: text; /* 裁剪背景以显示文字 */
+    color: transparent; /* 文字颜色透明 */
+    font-weight: bold; /* 文字加粗 */
+    animation: pulse 1s infinite; /* 添加脉冲动画效果 */
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+button {
+    background-color: transparent; /* 背景透明 */
+    color: #00ffcc; /* 字体颜色 */
+    border: 2px solid; /* 添加边框 */
+    border-image: linear-gradient(45deg, #00ffcc, #ff00cc) 1; /* 渐变边框 */
+    padding: 5px 10px; /* 内边距 */
+    cursor: pointer; /* 鼠标样式 */
+    border-radius: 5px; /* 圆角边框 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 动画效果 */
+}
+
+button:hover {
+    background-color: rgba(85, 85, 85, 0.5); /* 鼠标悬停时背景颜色 */
+    transform: scale(1.1); /* 鼠标悬停时放大效果 */
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #00ffff); /* 渐变文字 */
+    -webkit-background-clip: text; /* 裁剪背景以显示文字 */
+    color: transparent; /* 文字颜色透明 */
+}
+
+#shuffle-btn-container {
+    margin-left: 10px; /* 设置左外边距，使其与下一曲按钮拉开距离 */
+}
+
+#shuffle-btn {
+    width: 30px; /* 宽度30px */
+    cursor: pointer; /* 鼠标样式 */
+    transition: transform 0.3s ease, filter 0.3s ease; /* 动画效果 */
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(270deg) brightness(100%) contrast(100%); /* 图标颜色调整 */
+}
+
+#shuffle-btn:hover {
+    filter: brightness(1.2) invert(100%) sepia(0%) saturate(7500%) hue-rotate(270deg) brightness(100%) contrast(100%); /* 鼠标悬停时亮度变化 */
+    transform: rotate(20deg); /* 鼠标悬停时旋转效果 */
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #00ffff); /* 渐变文字 */
+    -webkit-background-clip: text; /* 裁剪背景以显示文字 */
+    color: transparent; /* 文字颜色透明 */
+    font-weight: bold; /* 文字加粗 */
+}
