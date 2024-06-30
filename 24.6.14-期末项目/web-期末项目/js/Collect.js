@@ -259,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
             不再让时间和资本的无情统治我的生活。`
         },
         {
+<<<<<<< HEAD
             title: '再别康桥',
             content: `
             轻轻的我走了，<br />
@@ -296,6 +297,8 @@ document.addEventListener('DOMContentLoaded', function () {
 `
         },
         {
+=======
+>>>>>>> a4b038f8d1e7a2c13e27e0bd743b1030de5770c3
             title: '成长与认知',
             content: `我们年轻的时候，总是相信，<br />
                       我们爱的那个女孩，<br />
