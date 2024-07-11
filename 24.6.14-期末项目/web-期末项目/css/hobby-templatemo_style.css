@@ -1,0 +1,1081 @@
+body {
+    overflow: auto; /* 确保页面可以滚动 */
+}
+
+
+.overlay {
+    pointer-events: none; /* 确保 overlay 不阻挡鼠标事件 */
+    
+}
+
+/* 确保没有阻止滚动的样式 */
+.header-wrapper,
+.project-item,
+.footer {
+    z-index: auto; /* 确保这些元素不会覆盖滚动条 */
+}
+
+
+
+/* overlay 中 h4 元素的样式，垂直居中对齐 */
+.overlay h4 {
+    position: relative; /* 设置相对定位 */
+    top: 50%; /* 元素向下移动 50% */
+    -webkit-transform: translateY(-50%); /* 使用 Webkit 浏览器实现垂直居中 */
+    -ms-transform: translateY(-50%); /* 使用 Microsoft 浏览器实现垂直居中 */
+    transform: translateY(-50%); /* 使用标准 CSS 实现垂直居中 */
+}
+
+/* 清除浮动 */
+.header-wrapper:after {
+    content: ""; /* 生成一个空的内容 */
+    display: table; /* 将元素显示为表格 */
+    clear: both; /* 清除前面浮动的影响 */
+}
+
+/* 定义蓝色字体颜色 */
+.blue {
+    color: #3CF; /* 设置字体颜色为蓝色 */
+}
+
+/* 定义绿色字体颜色 */
+.green {
+    color: #0F0; /* 设置字体颜色为绿色 */
+}
+
+/* 重置 HTML 元素的默认样式 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary, time, mark,
+audio, video {
+    margin: 0; /* 清除默认的外边距 */
+    padding: 0; /* 清除默认的内边距 */
+    border: 0; /* 清除默认的边框 */
+    font-size: 100%; /* 重置字体大小 */
+    font: inherit; /* 继承父元素的字体样式 */
+    vertical-align: baseline; /* 垂直对齐基线 */
+}
+
+/* 让新 HTML5 元素以块级元素显示 */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block; /* 设置为块级元素 */
+}
+
+/* 设置 body 的行高 */
+body {
+    line-height: 1; /* 设置行高为 1 */
+}
+
+/* 清除列表的默认样式 */
+ol, ul {
+    list-style: none; /* 去除列表项的默认样式 */
+}
+
+/* 清除 blockquote 和 q 元素的引号 */
+blockquote, q {
+    quotes: none; /* 去除引号 */
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: ''; /* 去除引号 */
+    content: none; /* 去除引号 */
+}
+
+/* 表格样式重置 */
+table {
+    border-collapse: collapse; /* 合并表格边框 */
+    border-spacing: 0; /* 清除单元格间距 */
+}
+
+/* 设置 html 的盒模型 */
+html {
+    box-sizing: border-box; /* 设置盒模型为 border-box */
+}
+
+/* 继承盒模型 */
+*, *:before, *:after {
+    box-sizing: inherit; /* 继承父元素的盒模型 */
+}
+
+/* 页眉样式 */
+.site-header {
+    margin-bottom: 80px; /* 设置下边距为 80px */
+}
+
+/* 页眉包装器样式 */
+.header-wrapper {
+    border-bottom: 2px solid #46494f; /* 设置底部边框 */
+    padding: 30px 0; /* 设置上下内边距为 30px */
+    position: relative; /* 设置相对定位 */
+}
+
+/* 切换导航按钮样式 */
+a.toggle-nav {
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 顶部对齐 */
+    right: 0; /* 右侧对齐 */
+    margin: 60px 0; /* 上下外边距为 60px */
+    width: 46px; /* 宽度为 46px */
+    height: 46px; /* 高度为 46px */
+    background: #4e91c9; /* 背景颜色 */
+    text-align: center; /* 文本居中对齐 */
+    line-height: 46px; /* 行高为 46px */
+}
+
+a.toggle-nav i {
+    font-size: 16px; /* 字体大小为 16px */
+}
+
+/* 切换导航按钮悬停样式 */
+a.toggle-nav:hover {
+    color: #fff; /* 字体颜色变为白色 */
+}
+
+/* 网站品牌样式 */
+.site-branding h1 {
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; /* 字体样式 */
+    font-size: 30px; /* 字体大小为 30px */
+    font-weight: 700; /* 字体加粗 */
+    color: #fff; /* 字体颜色为白色 */
+    text-transform: uppercase; /* 字母大写 */
+}
+
+/* 主导航样式 */
+nav.main-navigation {
+    text-align: right; /* 文本右对齐 */
+    margin-top: 10px; /* 上边距为 10px */
+}
+
+/* 版权信息样式 */
+.copyrights {
+    text-indent: -9999px; /* 文字缩进隐藏 */
+    height: 0; /* 高度为 0 */
+    line-height: 0; /* 行高为 0 */
+    font-size: 0; /* 字体大小为 0 */
+    overflow: hidden; /* 溢出隐藏 */
+}
+
+/* 响应式设计：屏幕宽度小于 992px 时 */
+@media screen and (max-width: 992px) {
+    nav.main-navigation {
+        margin-top: 20px; /* 上边距为 20px */
+        text-align: left; /* 文本左对齐 */
+    }
+}
+
+/* 响应式设计：屏幕宽度小于 992px 时，隐藏菜单 */
+@media screen and (max-width: 992px) {
+    .menu-responsive {
+        display: none; /* 隐藏元素 */
+    }
+}
+
+/* 响应式设计：屏幕宽度大于 993px 时，设置容器内边距 */
+@media screen and (min-width: 993px) {
+    .container {
+        padding-right: 40px; /* 右侧内边距为 40px */
+        padding-left: 40px; /* 左侧内边距为 40px */
+    }
+}
+
+/* 响应式设计：屏幕宽度小于 1040px 时，设置容器内边距 */
+@media screen and (max-width: 1040px) {
+    .container {
+        padding-right: 40px; /* 右侧内边距为 40px */
+        padding-left: 40px; /* 左侧内边距为 40px */
+    }
+}
+
+/* 主菜单样式 */
+ul.main-menu li {
+    display: inline-block; /* 内联块元素 */
+    margin-left: 10px; /* 左侧外边距为 10px */
+}
+
+ul.main-menu li a {
+    padding: 10px 15px; /* 内边距，上下10像素，左右15像素 */
+    text-transform: uppercase; /* 字母大写 */
+    font-size: 13px; /* 字体大小为 13px */
+}
+
+/* 活动菜单项样式 */
+ul.main-menu li a.active {
+    background: #4e91c9; /* 背景颜色 */
+    color: #fff; /* 字体颜色 */
+}
+
+/* 响应式设计：屏幕宽度小于 992px 时，主菜单样式 */
+@media screen and (max-width: 992px) {
+    ul.main-menu {
+        background: #26282c; /* 背景颜色 */
+        padding: 10px 0; /* 上下内边距为 10px */
+    }
+
+    ul.main-menu li {
+        display: block; /* 块级元素 */
+        margin-left: 0; /* 左侧外边距为 0 */
+        margin-right: 0; /* 右侧外边距为 0 */
+        margin-bottom: 10px; /* 底部外边距为 10px */
+        margin-top: 10px; /* 顶部外边距为 10px */
+    }
+
+    ul.main-menu li a {
+        font-size: 15px; /* 字体大小为 15px */
+        font-weight: 300; /* 字体重量为 300 */
+    }
+
+    ul.main-menu li a.active {
+        background: inherit; /* 继承背景颜色 */
+        color: #4e91c9; /* 字体颜色 */
+    }
+}
+
+/* 内容样式 */
+.content {
+    display: none; /* 隐藏内容 */
+}
+
+/* 首页介绍部分样式 */
+.home-intro {
+    margin-bottom: 100px; /* 底部外边距为 100px */
+}
+
+.home-intro p {
+    font-size: 18px; /* 字体大小为 18px */
+    line-height: 1.85; /* 行高为 1.85 */
+    width: 80%; /* 宽度为 80% */
+    margin: 0 auto; /* 居中对齐 */
+    -moz-animation-delay: 0.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.5s; /* 标准 CSS 动画延迟 */
+}
+
+h2.welcome-title {
+    font-weight: 100; /* 字体重量为 100 */
+    color: #fff; /* 字体颜色为白色 */
+    font-size: 48px; /* 字体大小为 48px */
+    margin-bottom: 30px; /* 底部外边距为 30px */
+    -moz-animation-delay: 0.1s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.1s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.1s; /* 标准 CSS 动画延迟 */
+}
+
+/* 响应式设计：屏幕宽度小于 992px 时，欢迎标题样式 */
+@media screen and (max-width: 992px) {
+    h2.welcome-title {
+        font-size: 36px; /* 字体大小为 36px */
+    }
+}
+
+/* 图标列表样式 */
+.list-icons {
+    margin-top: 60px; /* 顶部外边距为 60px */
+    -moz-animation-delay: 0.9s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.9s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.9s; /* 标准 CSS 动画延迟 */
+}
+
+.list-icons li {
+    display: inline-block; /* 内联块元素 */
+    margin: 15px 40px; /* 上下外边距为 15px，左右外边距为 40px */
+}
+
+.list-icons li i {
+    font-size: 45px; /* 图标大小为 45px */
+    color: #fff; /* 图标颜色为白色 */
+}
+
+/* 首页项目样式 */
+.home-projects {
+    margin-bottom: 100px; /* 底部外边距为 100px */
+}
+
+.home-projects h2 {
+    color: #fff; /* 字体颜色为白色 */
+    font-size: 36px; /* 字体大小为 36px */
+    margin-top: 0; /* 顶部外边距为 0 */
+    margin-bottom: 35px; /* 底部外边距为 35px */
+}
+
+.home-projects p {
+    margin-bottom: 32px; /* 底部外边距为 32px */
+}
+
+/* 项目标题样式 */
+.project-title {
+    padding: 60px; /* 内边距为 60px */
+    background: #46494f; /* 背景颜色 */
+    margin-bottom: 20px; /* 底部外边距为 20px */
+}
+
+/* 项目项样式 */
+.project-item {
+    margin-bottom: 30px; /* 底部外边距为 30px */
+    position: relative; /* 设置相对定位 */
+    overflow: hidden; /* 超出隐藏 */
+    border: 3px solid #1a1c1f; /* 边框颜色和大小 */
+}
+
+/* 项目图片样式 */
+.project-item img {
+    width: 100%; /* 宽度为 100% */
+    display: block; /* 显示为块元素 */
+}
+
+/* 覆盖层样式 */
+.overlay {
+    position: absolute; /* 绝对定位 */
+    width: 100%; /* 宽度为 100% */
+    height: 100%; /* 高度为 100% */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    background: rgba(169,91,195,0.9); /* 半透明背景 */
+    text-align: center; /* 文本居中对齐 */
+    opacity: 0; /* 初始透明度 */
+    -webkit-transition: all 200ms ease-in-out; /* Webkit 浏览器的过渡效果 */
+    -moz-transition: all 200ms ease-in-out; /* Mozilla 浏览器的过渡效果 */
+    -ms-transition: all 200ms ease-in-out; /* Microsoft 浏览器的过渡效果 */
+    -o-transition: all 200ms ease-in-out; /* Opera 浏览器的过渡效果 */
+    transition: all 200ms ease-in-out; /* 标准 CSS 过渡效果 */
+    -moz-transform: rotate(45deg); /* Mozilla 浏览器的旋转效果 */
+    -ms-transform: rotate(45deg); /* Microsoft 浏览器的旋转效果 */
+    -o-transform: rotate(45deg); /* Opera 浏览器的旋转效果 */
+    -webkit-transform: rotate(45deg); /* Webkit 浏览器的旋转效果 */
+    transform: rotate(45deg); /* 标准 CSS 旋转效果 */
+}
+
+/* 覆盖层中的 h4 元素样式 */
+.overlay h4 {
+    font-size: 18px; /* 字体大小为 18px */
+}
+
+.overlay h4 a {
+    color: #fff; /* 链接颜色为白色 */
+}
+
+/* 项目项悬停效果 */
+.project-item:hover .overlay {
+    opacity: 1; /* 设置透明度为 1 */
+    -moz-transform: rotate(0); /* Mozilla 浏览器的旋转效果 */
+    -ms-transform: rotate(0); /* Microsoft 浏览器的旋转效果 */
+    -o-transform: rotate(0); /* Opera 浏览器的旋转效果 */
+    -webkit-transform: rotate(0); /* Webkit 浏览器的旋转效果 */
+    transform: rotate(0); /* 标准 CSS 旋转效果 */
+}
+
+/* 项目项动画延迟 */
+.project-item.one {
+    -moz-animation-delay: 0.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.5s; /* 标准 CSS 动画延迟 */
+}
+
+.project-item.two {
+    -moz-animation-delay: 1s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1s; /* 标准 CSS 动画延迟 */
+}
+
+.project-item.three {
+    -moz-animation-delay: 1.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.5s; /* 标准 CSS 动画延迟 */
+}
+
+.project-item.four {
+    -moz-animation-delay: 2s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2s; /* 标准 CSS 动画延迟 */
+}
+
+/* 我们的故事部分样式 */
+.our-story {
+    padding: 0 50px; /* 内边距为左右 50px */
+    margin-top: 30px; /* 顶部外边距为 30px */
+    position: relative; /* 设置相对定位 */
+    overflow: hidden; /* 超出隐藏 */
+}
+
+/* 故事背景样式 */
+.story-bg {
+    background: url("../img/story-bg.jpg"); /* 背景图片 */
+    background-repeat: no-repeat; /* 背景不重复 */
+    background-size: cover; /* 背景覆盖 */
+    position: absolute; /* 绝对定位 */
+    width: 100%; /* 宽度为 100% */
+    height: 100%; /* 高度为 100% */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    -moz-animation-delay: 1.7s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.7s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.7s; /* 标准 CSS 动画延迟 */
+}
+
+/* 内部故事部分样式 */
+.inner-story {
+    background: #fff; /* 背景颜色为白色 */
+    padding: 40px; /* 内边距为 40px */
+    color: #32353a; /* 字体颜色 */
+}
+
+.inner-story h2 {
+    margin-bottom: 30px; /* 底部外边距为 30px */
+}
+
+.inner-story p {
+    margin-bottom: 0; /* 底部外边距为 0 */
+}
+
+/* 我们的服务部分样式 */
+.our-offers {
+    margin-top: 3px; /* 顶部外边距为 3px */
+    padding: 0 50px; /* 内边距为左右 50px */
+    position: relative; /* 设置相对定位 */
+    overflow: hidden; /* 超出隐藏 */
+    margin-bottom: 120px; /* 底部外边距为 120px */
+}
+
+/* 服务背景样式 */
+.offer-bg {
+    background: url("../img/offer-bg.jpg"); /* 背景图片 */
+    background-repeat: no-repeat; /* 背景不重复 */
+    background-size: cover; /* 背景覆盖 */
+    position: absolute; /* 绝对定位 */
+    width: 100%; /* 宽度为 100% */
+    height: 69%; /* 高度为 69% */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    -moz-animation-delay: 3.6s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 3.6s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 3.6s; /* 标准 CSS 动画延迟 */
+}
+
+/* 服务标题样式 */
+.offer-title {
+    color: #4e91c9; /* 字体颜色 */
+    padding: 30px; /* 内边距 */
+    background: #fff; /* 背景颜色 */
+    margin-bottom: 40px; /* 底部外边距 */
+    -moz-animation-delay: 1.2s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.2s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.2s; /* 标准 CSS 动画延迟 */
+}
+
+/* 服务项样式 */
+.offer-item {
+    margin-top: 40px; /* 顶部外边距 */
+    overflow: hidden; /* 超出隐藏 */
+}
+
+.offer-item figure {
+    border: 3px solid #fff; /* 边框样式 */
+}
+
+.offer-item figure img {
+    width: 100%; /* 宽度为 100% */
+    display: block; /* 显示为块元素 */
+}
+
+/* 服务内容样式 */
+.offer-content {
+    padding: 30px; /* 内边距 */
+    background: #fff; /* 背景颜色 */
+    color: #32353a; /* 字体颜色 */
+    position: relative; /* 设置相对定位 */
+}
+
+.offer-content h4 {
+    margin-bottom: 30px; /* 底部外边距 */
+    font-weight: normal; /* 字体重量 */
+}
+
+.offer-content p {
+    margin-bottom: 0; /* 底部外边距 */
+}
+
+/* 左侧标记样式 */
+span.offer-left {
+    position: absolute; /* 绝对定位 */
+    bottom: -1px; /* 底部对齐 */
+    left: -1px; /* 左侧对齐 */
+    width: 30px; /* 宽度 */
+    height: 30px; /* 高度 */
+}
+
+.offer-left>i {
+    position: absolute; /* 绝对定位 */
+    display: inline-block; /* 内联块元素 */
+    width: 0; /* 宽度 */
+    height: 0; /* 高度 */
+    line-height: 0; /* 行高 */
+    border: 15px solid transparent; /* 边框透明 */
+    border-left: 15px solid #32353a; /* 左侧边框颜色 */
+    border-bottom: 15px solid #32353a; /* 底部边框颜色 */
+    left: 0px; /* 左侧对齐 */
+    top: 0px; /* 顶部对齐 */
+}
+
+/* 右侧标记样式 */
+span.offer-right {
+    position: absolute; /* 绝对定位 */
+    bottom: -1px; /* 底部对齐 */
+    right: -1px; /* 右侧对齐 */
+    width: 30px; /* 宽度 */
+    height: 30px; /* 高度 */
+}
+
+.offer-right>i {
+    position: absolute; /* 绝对定位 */
+    display: inline-block; /* 内联块元素 */
+    width: 0; /* 宽度 */
+    height: 0; /* 高度 */
+    line-height: 0; /* 行高 */
+    border: 15px solid transparent; /* 边框透明 */
+    border-right: 15px solid #32353a; /* 右侧边框颜色 */
+    border-bottom: 15px solid #32353a; /* 底部边框颜色 */
+    left: 0px; /* 左侧对齐 */
+    top: 0px; /* 顶部对齐 */
+}
+
+/* 服务项动画延迟 */
+.offer-1 {
+    -moz-animation-delay: 2.1s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.1s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.1s; /* 标准 CSS 动画延迟 */
+}
+
+.offer-2 {
+    -moz-animation-delay: 2.8s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.8s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.8s; /* 标准 CSS 动画延迟 */
+}
+
+/* 项目页眉样式 */
+.projects-header {
+    margin-top: 30px; /* 顶部外边距 */
+    margin-bottom: 80px; /* 底部外边距 */
+    text-align: center; /* 文本居中对齐 */
+}
+
+.projects-header h2 {
+    font-weight: 100; /* 字体重量 */
+    color: #fff; /* 字体颜色 */
+    font-size: 36px; /* 字体大小 */
+    margin-bottom: 30px; /* 底部外边距 */
+    -moz-animation-delay: 0.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.5s; /* 标准 CSS 动画延迟 */
+}
+
+.projects-header p {
+    font-size: 17px; /* 字体大小 */
+    line-height: 1.75em; /* 行高 */
+    -moz-animation-delay: 1s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1s; /* 标准 CSS 动画延迟 */
+}
+
+/* 项目持有者样式 */
+.projects-holder {
+    margin-bottom: 80px; /* 底部外边距 */
+}
+
+/* 各项目项的动画延迟 */
+.p-1 {
+    -moz-animation-delay: 1.7s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.7s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.7s; /* 标准 CSS 动画延迟 */
+}
+
+.p-2 {
+    -moz-animation-delay: 2s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2s; /* 标准 CSS 动画延迟 */
+}
+
+.p-3 {
+    -moz-animation-delay: 2.3s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.3s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.3s; /* 标准 CSS 动画延迟 */
+}
+
+.p-4 {
+    -moz-animation-delay: 2.6s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.6s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.6s; /* 标准 CSS 动画延迟 */
+}
+
+.p-5 {
+    -moz-animation-delay: 2.9s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.9s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.9s; /* 标准 CSS 动画延迟 */
+}
+
+.p-6 {
+    -moz-animation-delay: 3.1s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 3.1s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 3.1s; /* 标准 CSS 动画延迟 */
+}
+
+.p-7 {
+    -moz-animation-delay: 3.4s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 3.4s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 3.4s; /* 标准 CSS 动画延迟 */
+}
+
+/* 博客帖子样式 */
+.blog-posts {
+    margin-bottom: 80px; /* 底部外边距 */
+}
+
+/* 博客项样式 */
+.blog-item {
+    position: relative; /* 设置相对定位 */
+    overflow: hidden; /* 超出隐藏 */
+    padding: 20px; /* 内边距 */
+    color: #6d747e; /* 字体颜色 */
+    text-align: center; /* 文本居中对齐 */
+    margin-bottom: 30px; /* 底部外边距 */
+}
+
+.blog-item a {
+    color: #32353a; /* 链接颜色 */
+}
+
+.blog-item h3 {
+    font-size: 20px; /* 字体大小 */
+    font-weight: normal; /* 字体重量 */
+    letter-spacing: 1px; /* 字母间距 */
+}
+
+/* 博客项悬停效果 */
+.blog-item:hover .blog-bg {
+    -moz-transform: scale(1.2, 1.2); /* Mozilla 浏览器的缩放效果 */
+    -ms-transform: scale(1.2, 1.2); /* Microsoft 浏览器的缩放效果 */
+    -o-transform: scale(1.2, 1.2); /* Opera 浏览器的缩放效果 */
+    -webkit-transform: scale(1.2, 1.2); /* Webkit 浏览器的缩放效果 */
+    transform: scale(1.2, 1.2); /* 标准 CSS 缩放效果 */
+}
+
+/* 实心线条样式 */
+span.solid-line {
+    width: 60px; /* 宽度 */
+    height: 2px; /* 高度 */
+    background: #32353a; /* 背景颜色 */
+    display: block; /* 显示为块元素 */
+    margin-left: auto; /* 左侧外边距自动 */
+    margin-right: auto; /* 右侧外边距自动 */
+    margin-top: 30px; /* 顶部外边距 */
+    margin-bottom: 30px; /* 底部外边距 */
+}
+
+/* 帖子按钮样式 */
+.post-button {
+    font-size: 12px; /* 字体大小 */
+    text-transform: uppercase; /* 字母大写 */
+    font-weight: 700; /* 字体重量 */
+    padding: 12px 20px; /* 内边距 */
+    background: #eee; /* 背景颜色 */
+}
+
+/* 博客背景样式 */
+.blog-bg {
+    position: absolute; /* 绝对定位 */
+    width: 100%; /* 宽度 */
+    height: 100%; /* 高度 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    background-size: cover; /* 背景覆盖 */
+    background-repeat: no-repeat; /* 背景不重复 */
+    z-index: 8; /* 层叠顺序 */
+    -webkit-transition: all 200ms ease-in-out; /* Webkit 浏览器的过渡效果 */
+    -moz-transition: all 200ms ease-in-out; /* Mozilla 浏览器的过渡效果 */
+    -ms-transition: all 200ms ease-in-out; /* Microsoft 浏览器的过渡效果 */
+    -o-transition: all 200ms ease-in-out; /* Opera 浏览器的过渡效果 */
+    transition: all 200ms ease-in-out; /* 标准 CSS 过渡效果 */
+}
+
+/* 博客项动画延迟 */
+.post-1 {
+    -moz-animation-delay: 2.3s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.3s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.3s; /* 标准 CSS 动画延迟 */
+}
+
+.post-2 {
+    -moz-animation-delay: 2.8s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.8s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.8s; /* 标准 CSS 动画延迟 */
+}
+
+.post-3 {
+    -moz-animation-delay: 3.3s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 3.3s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 3.3s; /* 标准 CSS 动画延迟 */
+}
+
+/* 博客内容样式 */
+.blog-content {
+    position: relative; /* 设置相对定位 */
+    z-index: 9; /* 层叠顺序 */
+    background: #fff; /* 背景颜色 */
+    padding: 60px 30px; /* 内边距 */
+}
+
+.blog-content p {
+    line-height: 1.75em; /* 行高 */
+    margin-bottom: 35px; /* 底部外边距 */
+}
+
+/* 博客页眉样式 */
+.blog-header {
+    margin-bottom: 90px; /* 底部外边距 */
+}
+
+.blog-header h2 {
+    font-size: 36px; /* 字体大小 */
+    color: #fff; /* 字体颜色 */
+    margin-bottom: 30px; /* 底部外边距 */
+    font-weight: 100; /* 字体重量 */
+    -moz-animation-delay: 0.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.5s; /* 标准 CSS 动画延迟 */
+}
+
+.blog-header p {
+    font-size: 17px; /* 字体大小 */
+    line-height: 1.75em; /* 行高 */
+    margin-bottom: 35px; /* 底部外边距 */
+    -moz-animation-delay: 1.2s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.2s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.2s; /* 标准 CSS 动画延迟 */
+}
+
+/* 博客按钮样式 */
+.blog-button {
+    background: #d5b14f; /* 背景颜色 */
+    text-transform: uppercase; /* 字母大写 */
+    font-weight: 700; /* 字体重量 */
+    font-size: 12px; /* 字体大小 */
+    padding: 12px 20px; /* 内边距 */
+    color: #fff !important; /* 字体颜色，使用 !important 覆盖其他样式 */
+    -moz-animation-delay: 1.9s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.9s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.9s; /* 标准 CSS 动画延迟 */
+}
+
+/* 联系页眉样式 */
+.contact-header {
+    margin-bottom: 100px; /* 底部外边距 */
+}
+
+.contact-header h2 {
+    font-size: 36px; /* 字体大小 */
+    font-weight: 100; /* 字体重量 */
+    color: #fff; /* 字体颜色 */
+    margin-bottom: 30px; /* 底部外边距 */
+    -moz-animation-delay: 0.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 0.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 0.5s; /* 标准 CSS 动画延迟 */
+}
+
+.contact-header p {
+    font-size: 17px; /* 字体大小 */
+    line-height: 1.75em; /* 行高 */
+    -moz-animation-delay: 1.4s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 1.4s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 1.4s; /* 标准 CSS 动画延迟 */
+}
+
+/* 联系社交图标样式 */
+.contact-social {
+    -moz-animation-delay: 2s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2s; /* 标准 CSS 动画延迟 */
+}
+
+.contact-social li {
+    display: inline-block; /* 内联块元素 */
+    margin: 0 20px; /* 左右外边距 */
+}
+
+.contact-social li i {
+    font-size: 24px; /* 图标大小 */
+}
+
+/* 联系内容持有者样式 */
+.contact-holder {
+    background: #46494f; /* 背景颜色 */
+    margin-bottom: 100px; /* 底部外边距 */
+}
+
+/* 谷歌地图包装器样式 */
+.googlemap-wrapper {
+    -moz-animation-delay: 2.7s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 2.7s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 2.7s; /* 标准 CSS 动画延迟 */
+}
+
+/* 地图画布样式 */
+.map-canvas {
+    height: 505px; /* 高度 */
+}
+
+#map_canvas {
+    width: 100%; /* 宽度 */
+    height: 505px; /* 高度 */
+}
+
+#map_canvas img {
+    max-width: none; /* 图片最大宽度 */
+}
+
+/* 联系表单样式 */
+.contact-form {
+    -moz-animation-delay: 3.5s; /* Mozilla 浏览器的动画延迟 */
+    -webkit-animation-delay: 3.5s; /* Webkit 浏览器的动画延迟 */
+    animation-delay: 3.5s; /* 标准 CSS 动画延迟 */
+    padding-right: 30px; /* 右侧内边距 */
+}
+
+/* 响应式设计：屏幕宽度小于 992px 时，联系表单样式 */
+@media screen and (max-width: 992px) {
+    .contact-form {
+        padding-left: 30px; /* 左侧内边距 */
+    }
+}
+
+.contact-form h4 {
+    color: #fff; /* 字体颜色 */
+    font-size: 24px; /* 字体大小 */
+    margin: 30px 0; /* 上下外边距 */
+}
+
+/* 联系表单输入框和文本区域样式 */
+.contact-form input, .contact-form textarea {
+    background: #32353a; /* 背景颜色 */
+    border: 0; /* 无边框 */
+    outline: 0; /* 无轮廓 */
+    color: #fff; /* 字体颜色 */
+    font-size: 13px; /* 字体大小 */
+    height: 44px; /* 高度 */
+    max-width: 100%; /* 最大宽度 */
+    width: 100%; /* 宽度 */
+    margin-bottom: 30px; /* 底部外边距 */
+    padding: 10px; /* 内边距 */
+}
+
+/* 联系表单文本区域样式 */
+.contact-form textarea {
+    height: 150px; /* 高度 */
+}
+
+/* 消息按钮样式 */
+.message-button {
+    text-transform: uppercase; /* 字母大写 */
+    font-weight: 700; /* 字体重量 */
+    font-size: 12px; /* 字体大小 */
+    background: #4e91c9; /* 背景颜色 */
+    color: #fff !important; /* 字体颜色 */
+    padding: 12px 20px; /* 内边距 */
+    display: inline-block; /* 内联块元素 */
+    margin-bottom: 30px; /* 底部外边距 */
+}
+
+/* 主页脚样式 */
+.main-footer {
+    border-top: 2px solid #46494f; /* 顶部边框 */
+    border-bottom: 2px solid #46494f; /* 底部边框 */
+    padding: 30px 0 15px 0; /* 上下内边距 */
+}
+
+/* 页脚社交图标样式 */
+.main-footer .social li {
+    display: inline-block; /* 内联块元素 */
+    margin: 0 15px 15px 15px; /* 外边距 */
+}
+
+.main-footer .social li a {
+    padding: 20px; /* 内边距 */
+}
+
+/* 页脚社交图标悬停效果 */
+.main-footer .social li a:hover {
+    background: #4e91c9; /* 背景颜色 */
+    border-color: #4e91c9; /* 边框颜色 */
+}
+
+/* 版权信息样式 */
+.copyright {
+    margin-top: 30px; /* 顶部外边距 */
+    margin-bottom: 20px; /* 底部外边距 */
+}
+
+.copyright p {
+    margin-bottom: 10px; /* 底部外边距 */
+    font-size: 12px; /* 字体大小 */
+}
+
+/* 全局样式 */
+html {
+    font-size: 93.75%; /* 字体大小 */
+    -moz-osx-font-smoothing: grayscale; /* Mozilla 浏览器的字体平滑 */
+    -webkit-font-smoothing: antialiased; /* Webkit 浏览器的字体平滑 */
+}
+
+body {
+    /* background: #32353a;  */
+    font-size: 15px; /* 字体大小 */
+    font-weight: 300; /* 字体重量 */
+    color: #b7bcbe; /* 字体颜色 */
+    padding: 20px; /* 内边距 */
+    font-family: "Roboto", sans-serif; /* 字体样式 */
+    line-height: 1.55; /* 行高 */
+    text-rendering: optimizeLegibility; /* 文本渲染优化 */
+    -webkit-backface-visibility: hidden; /* Webkit 浏览器的背面可见性 */
+    overflow-x: hidden; /* 隐藏水平溢出 */
+}
+
+p {
+    margin-bottom: 30px; /* 底部外边距 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase; /* 字母大写 */
+}
+
+h1 {
+    font-size: 36px; /* 字体大小 */
+}
+
+h2 {
+    font-size: 30px; /* 字体大小 */
+}
+
+h3 {
+    font-size: 24px; /* 字体大小 */
+}
+
+h4 {
+    font-size: 20px; /* 字体大小 */
+}
+
+h5 {
+    font-size: 18px; /* 字体大小 */
+}
+
+h6 {
+    font-size: 15px; /* 字体大小 */
+}
+
+/* 链接样式 */
+a {
+    color: #fff; /* 链接颜色 */
+    text-decoration: none; /* 去除下划线 */
+    -webkit-transition: all 100ms ease-in-out; /* Webkit 浏览器的过渡效果 */
+    -moz-transition: all 100ms ease-in-out; /* Mozilla 浏览器的过渡效果 */
+    -ms-transition: all 100ms ease-in-out; /* Microsoft 浏览器的过渡效果 */
+    -o-transition: all 100ms ease-in-out; /* Opera 浏览器的过渡效果 */
+    transition: all 100ms ease-in-out; /* 标准 CSS 过渡效果 */
+}
+
+/* 链接悬停样式 */
+a:hover {
+    color: inherit; /* 继承父元素颜色 */
+    text-decoration: none; /* 去除下划线 */
+}
+
+/* 边框样式 */
+span[class*="border-"] {
+    position: fixed; /* 固定定位 */
+    background: #1f2122; /* 背景颜色 */
+}
+
+/* 顶部边框 */
+.border-top {
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 宽度 */
+    height: 20px; /* 高度 */
+}
+
+/* 左侧边框 */
+.border-left {
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 20px; /* 宽度 */
+    height: 100%; /* 高度 */
+}
+
+/* 底部边框 */
+.border-bottom {
+    bottom: 0; /* 底部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100%; /* 宽度 */
+    height: 20px; /* 高度 */
+}
+
+/* 右侧边框 */
+.border-right {
+    top: 0; /* 顶部对齐 */
+    right: 0; /* 右侧对齐 */
+    width: 20px; /* 宽度 */
+    height: 100%; /* 高度 */
+}
+
+/* 形状样式 */
+.shape-1 {
+    position: fixed; /* 固定定位 */
+    top: 20px; /* 顶部外边距 */
+    right: 20px; /* 右侧外边距 */
+    width: 50px; /* 宽度 */
+    height: 50px; /* 高度 */
+    background: url("../img/shape-1.png") no-repeat; /* 背景图片 */
+}
+
+.shape-2 {
+    position: fixed; /* 固定定位 */
+    bottom: 20px; /* 底部外边距 */
+    left: 20px; /* 左侧外边距 */
+    width: 50px; /* 宽度 */
+    height: 50px; /* 高度 */
+    background: url("../img/shape-2.png") no-repeat; /* 背景图片 */
+}
+
+/* 主要按钮样式 */
+.main-button, .main-footer .social li a {
+    color: #fff; /* 字体颜色 */
+    text-transform: uppercase; /* 字母大写 */
+    font-size: 12px; /* 字体大小 */
+    padding: 10px 15px; /* 内边距 */
+    display: inline-block; /* 内联块元素 */
+    border: 2px solid #46494f; /* 边框样式 */
+}
+
+/* 粉色按钮样式 */
+.pink-button {
+    color: #fff; /* 字体颜色 */
+    text-transform: uppercase; /* 字母大写 */
+    font-size: 12px; /* 字体大小 */
+    padding: 10px 15px; /* 内边距 */
+    display: inline-block; /* 内联块元素 */
+    background: #a95bc3; /* 背景颜色 */
+    font-weight: normal; /* 字体重量 */
+}
+
+.pink-button:hover {
+    color: #fff; /* 字体颜色 */
+}
+
+
+
+

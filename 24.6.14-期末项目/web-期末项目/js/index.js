@@ -8,6 +8,11 @@ function navigateTo(page) {
     window.location.href = page; // 跳转到指定的页面
 }
 
+// 退出登录并跳转到 login.html
+function logout() {
+    window.location.href = 'login.html'; // 跳转到登录页面
+}
+
 // 等待整个文档内容加载完毕后执行
 document.addEventListener("DOMContentLoaded", function() {
     // 获取旋转圆形图片和静止圆形图片的元素
@@ -41,11 +46,30 @@ window.onload = function() {
 
 // 随机名言数组
 const quotes = [
-    "名言1: 知识就是力量。",
-    "名言2: 时间就是金钱。",
-    "名言3: 努力奋斗，勇往直前。",
-    "名言4: 成功源于坚持不懈。"
+    "人无贱者，唯自弃也",
+    "往者不可谏，来者犹可追",
+    "爱情终究是死了，也曾经憧憬过，\n我终于跟不再年少的自己妥协。",
+    "你可以很爱一个人的同时，依然选择和他说再见，\n你可以时刻都在思念一个人，但你仍然庆幸他不会再出现在你生命里。\n——《你当像鸟飞往你的山》",
+    "内心丰盈者，独行也如众。",
+    "我知道那不是我的月亮，\n但是某一刻月光确实照在了我的身上。",
+    "人终被年少不可得之物困其一生。",
+    "欲买桂花.同载酒，终不似，少年游…",
+    "没人能比的上我记忆中的你，现在的你也不行。",
+    "人的一切痛苦，本质上都是对自己无能的愤怒。",
+    "我放不下的是自己编织给自己的美好的梦，\n只是刚好梦里女主是她。",
+    "岁月悠悠，总有什么值得我静静守候，\n晨初的一缕曙光，或是那远方的呢喃。",
+    "我喜欢你，不管你喜欢谁，这都无法改变。",
+    "你站在窗前看风景，我在楼下看你，\n明月装饰了你的窗子，\n你装饰了我的梦。",
+    "你的痛苦来自那个你误以为拥有药方的人。",
+    "在你出现的前一分钟里，我感应得到你。",
+    "我想成为空气,只在你身上栖息片刻。\n我想不被觉察也不可或缺。\n——约瑟夫·布罗茨基",
+    "愿你读我这部书，愿你渐渐喜欢我\n——波德莱尔。",
+    "下辈子，我要变成一枚，印错的字，\n错降在一首，完美的情诗里，\n让你微微诧异，让你认真思考，\n我存在的意义\n——徐珮芬《下辈子》",
+    "有美人兮，见之不忘，一日不见兮，思之如狂。\n——佚名《凤求凰琴歌 》",
+    "生命里过客匆匆，\n有些人，或许多年后还会在桥头巷陌重逢，不言语只一个眼神便擦身而过。\n有些人，扫落于尘埃深处，此生再不复与见。",
+    "我偷偷碰了你一下，却不料你如蒲公英散开，\n此后到处都是你的模样。\n——贾平凹",
 ];
+
 
 // 从数组中随机选择一条名言并显示
 function displayRandomQuote() {
@@ -77,6 +101,8 @@ function initBackground() {
         x: 30 * canvas.width / 100, // 设置鼠标初始位置X
         y: 30 * canvas.height / 100 // 设置鼠标初始位置Y
     };
+
+    var isMouseInside = true; // 用于标记鼠标是否在页面内
 
     // 定义点和线条的相关参数
     var dots = {
@@ -135,6 +161,9 @@ function initBackground() {
         this.radius = Math.random() * 2; // 随机生成点的半径
 
         this.color = new Color(); // 随机生成点的颜色
+        this.attractionTime = 0; // 初始化被磁吸的时间
+        this.isEscaping = false; // 标记是否在逃离
+        this.escapeStartTime = null; // 逃离开始时间
     }
 
     Dot.prototype = {
@@ -165,15 +194,49 @@ function initBackground() {
             dot.x += dot.vx;
             dot.y += dot.vy;
 
-            // 添加磁吸效果
-            var distanceToMouseX = dot.x - mousePosition.x; // 点到鼠标的X距离
-            var distanceToMouseY = dot.y - mousePosition.y; // 点到鼠标的Y距离
-            var distanceToMouse = Math.sqrt(distanceToMouseX * distanceToMouseX + distanceToMouseY * distanceToMouseY); // 点到鼠标的总距离
+            // 仅在鼠标在页面内时应用磁吸效果
+            if (isMouseInside) {
+                // 添加磁吸效果
+                var distanceToMouseX = dot.x - mousePosition.x; // 点到鼠标的X距离
+                var distanceToMouseY = dot.y - mousePosition.y; // 点到鼠标的Y距离
+                var distanceToMouse = Math.sqrt(distanceToMouseX * distanceToMouseX + distanceToMouseY * distanceToMouseY); // 点到鼠标的总距离
 
-            // 当点在磁吸范围内时，逐渐靠近边缘
-            if (distanceToMouse < dots.d_radius) {
-                dot.x -= distanceToMouseX * 0.01; // 调整吸引力强度
-                dot.y -= distanceToMouseY * 0.01; // 调整吸引力强度
+                if (!dot.isEscaping) {
+                    // 当点在磁吸范围内时，逐渐靠近边缘，并增加被磁吸的时间
+                    if (distanceToMouse < dots.d_radius) {
+                        dot.x -= distanceToMouseX * 0.01; // 调整吸引力强度
+                        dot.y -= distanceToMouseY * 0.01; // 调整吸引力强度
+                        dot.attractionTime += 1; // 增加被磁吸的时间
+                    } else {
+                        dot.attractionTime = 0; // 重置被磁吸的时间
+                    }
+
+                    // 当被磁吸超过3秒后，有概率挣脱磁吸，时间越久概率越大
+                    if (dot.attractionTime > 300 && Math.random() < (dot.attractionTime - 300) / 1000) {
+                        dot.isEscaping = true; // 标记为逃离状态
+                        dot.vx += distanceToMouseX * 0.05; // 逃离时速度加快
+                        dot.vy += distanceToMouseY * 0.05; // 逃离时速度加快
+                        dot.escapeStartTime = Date.now(); // 记录逃离开始时间
+                    }
+                } else {
+                    // 当点在逃离状态时，不受磁吸影响
+                    dot.x += dot.vx; 
+                    dot.y += dot.vy;
+                    dot.attractionTime = 0; // 重置被磁吸的时间
+
+                    // 检查逃离时间
+                    var elapsedTime = Date.now() - dot.escapeStartTime; // 计算逃离时间
+                    if (elapsedTime > 2000) {
+                        var speedReduction = Math.min((elapsedTime - 2000) / 4000, 1); // 2秒后开始衰减，6秒后回到正常速度
+                        dot.vx *= 1 - speedReduction * 0.8; // 逐渐减速，确保速度不会变为零
+                        dot.vy *= 1 - speedReduction * 0.8; // 逐渐减速，确保速度不会变为零
+                        if (speedReduction >= 1) {
+                            dot.vx = Math.sign(dot.vx) * 0.5; // 设置为正常速度
+                            dot.vy = Math.sign(dot.vy) * 0.5; // 设置为正常速度
+                            dot.isEscaping = false; // 取消逃离状态
+                        }
+                    }
+                }
             }
         }
 
@@ -264,11 +327,11 @@ function initBackground() {
     window.addEventListener('mousemove', function (e) {
         mousePosition.x = e.pageX; // 更新鼠标位置X
         mousePosition.y = e.pageY; // 更新鼠标位置Y
+        isMouseInside = true; // 标记鼠标在页面内
     });
 
     window.addEventListener('mouseleave', function (e) {
-        mousePosition.x = canvas.width / 2; // 鼠标离开时重置位置X
-        mousePosition.y = canvas.height / 2; // 鼠标离开时重置位置Y
+        isMouseInside = false; // 标记鼠标离开页面
     });
 
     // 窗口大小改变时重新设置画布大小
@@ -287,4 +350,15 @@ function initBackground() {
             requestAnimationFrame(animateDots); // 页面可见时重新开始动画
         }
     });
+}
+
+// 显示弹窗
+function showPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block"; // 显示弹窗
+
+    // 2秒后隐藏弹窗
+    setTimeout(function() {
+        popup.style.display = "none";
+    }, 2000);
 }

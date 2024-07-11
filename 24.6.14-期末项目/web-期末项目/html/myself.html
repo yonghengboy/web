@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人自序</title>
+    <meta name="theme-color" content="#ffc91d"/>
+    <link rel="icon" href="../img/myself/favicon.ico" />
+    <!-- 排版 -->
+    <link href="../css/myself-kico.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/myself-paul.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/myself.css" rel="stylesheet" type="text/css"/>
+    <!-- 动画 -->
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/music.css"> <!-- 引入CSS文件 -->
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+<style> 
+.song-myself{
+    z-index: 1003; /* 设置较高的层叠顺序 */
+}
+</style>
+</head>
+<body>
+    <!-- 创建画布元素，用于背景动画 -->
+        <div id="box"></div>
+        <div id="snowPile"></div>
+
+    <!-- 音乐播放器 -->
+    <div id="player-container" class="song-myself">
+        <div id="song-list">
+            <ul id="songs">
+                <!-- JavaScript will populate songs here -->
+            </ul>
+        </div>
+        <div id="controls">
+            <button id="prev-btn">上一曲</button> <!-- 上一曲按钮 -->
+            <button id="play-pause-btn">暂停</button> <!-- 播放/暂停按钮 -->
+            <button id="next-btn">下一曲</button> <!-- 下一曲按钮 -->
+            <div id="shuffle-btn-container">
+                <img id="shuffle-btn" src="../img/SvgSpinnersBlocksShuffle3.svg" alt="随机播放"> <!-- 随机播放按钮 -->
+            </div>
+        </div>
+    </div>
+    <div id="song-hint" class="sidebar-toggle">音乐播放器</div> <!-- 提示框 -->
+    <div id="notification">正在播放</div> <!-- 通知框 -->
+   
+       
+
+<aside class="sidebar">
+    <div class="avatar">
+        <img src="../img/myself/me.jpg" title="Chien_W"/>
+    </div>
+    <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="#info">资料</a>
+        <a href="#skills">技能</a>
+        <a href="#works">作品</a>
+        <a href="#story">经历</a>
+
+    </nav>
+</aside>
+<main>
+    <section id="info">
+        <div class="wrap">
+            <h2 class="title">个人资料</h2>
+            <div class="row">
+                <div class="col-l-4">
+                    <p>姓名：义峰</p>
+                    <p>性别：男</p>
+                    <p>年龄：20</p>
+                    <p>英文名：yonghengboy</p>
+                    <p>学历：大专</p>
+                </div>
+                <div class="col-l-4">
+                    <p>QQ：2124997180</p>
+                    <p>GitHub：<a href="https://github.com/yonghengboy/web">yonghengboy</a></p>
+                    <p>邮箱：<a href="mailto:2124997180@qq.com">2124997180@qq.com.com</a></p>
+                    <p>评价：一个没有对象的野指针！！！</p>
+                </div>
+                <div class="col-l-4">
+                    <p>我是一个热爱钻研计算机技术的少年，从小开始对计算机有极大的兴趣。作为计算机专业的学生，我热爱我的专业并为其投入巨大的热情和精力。希望大家能和我一同热爱计算机！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills">
+        <div class="wrap">
+            <h2 class="title">掌握的技能</h2>
+            <div class="row scrollable">
+                <div class="col-s-6 col-m-4 center-fixed">
+                    <div class="skills-icon">
+                        <i class="fa fa-html5"></i>
+                    </div>
+                    <div class="skills-title">
+                        <h3>HTML 5</h3>
+                        <p>熟悉 HTML5 网站的架构和开发</p>
+                    </div>
+                </div>
+                <div class="col-s-6 col-m-4 center-fixed">
+                    <div class="skills-icon">
+                        <i class="fa fa-css3"></i>
+                    </div>
+                    <div class="skills-title">
+                        <h3>CSS3</h3>
+                        <p>熟悉使用 CSS3 写响应式网站、动画等</p>
+                    </div>
+                </div>
+                <div class="col-s-6 col-m-4 center-fixed">
+                    <div class="skills-icon">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <div class="skills-title">
+                        <h3>JavaScript</h3>
+                        <p>能使用 JS 制作简单的程序、交互与特效</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="works">
+        <div class="wrap">
+            <h2 class="title">个人作品</h2>
+            <div class="row">
+                <div class="col-s-6">
+                    <div class="works-item">
+                        <a href="https://github.com/yonghengboy/web" target="_blank">
+                            <img src="../img/主页2.png" alt="Github"/>
+                            <p>Github</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-s-6">
+                    <div class="works-item">
+                        <a href="index.html" target="_blank">
+                            <img src="../img/主页.png" alt="博客主题"/>
+                            <p>博客主题</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="story">
+        <div class="wrap">
+            <h2 class="title">个人经历</h2>
+            <div class="row">
+                <div class="col-m-8">
+                    <ul class="timeline">
+                        <li>2003.09: 加入地球OL </li>
+                        <li>2017.09: 接触互联网 </li>
+                        <li>2020.12: 第一个"Hello world" </li>
+                        <li>2023.10: 接触github </li>
+                        <li>2023.11: 第一个java项目</li>
+                        <li>2024.06: 建立个人博客 </li>
+                        <li>---</li>
+                    </ul>
+                </div>
+                <div class="col-m-4 center-fixed">
+                    <img src="../img/myself/story.png"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 By <a href="https://github.com/yonghengboy/web" title="yonghengboy的github" target="_blank">yonghengboy</a>.</p>
+    </footer>
+</main>
+<script src="../js/myself-kico.js"></script>
+<script src="../js/snowflakes.js" type="text/javascript"></script>
+<!-- 樱花  页面太卡顿 取消--> 
+<!-- <script src="../js/flower.js" type="text/javascript"></script> -->
+ <script src="../js/music.js"></script> <!-- 引入JavaScript文件 -->
+
+</body>
+</html>
